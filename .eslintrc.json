@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["airbnb"],
+  "ignorePatterns": ["webpack.dev.config.js", "build/"],
+  "rules": {
+    "quotes": ["error", "double"],
+    "linebreak-style": ["error", "windows"],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-underscore-dangle": "off",
+    "no-restricted-syntax": "off",
+    "object-curly-newline": "off"
+  }
+}
