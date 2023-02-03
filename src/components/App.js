@@ -5,38 +5,40 @@ import Controller from "../helpers/Controller";
 import fetchData from "../helpers/fetchData";
 
 class App extends Controller {
+  constructor() {
+    super();
+    this.state = {
 
-    constructor() {
-        super();
-        this.state = {
+    };
+  }
 
-        };
+  async initState() {
 
-    }
+  }
 
-    async initState() {
+  handleSection(target) {
+    this.updateRootElement();
+  }
 
-    }
+  async render() {
+    await this.initState();
+    const header = new Header({
+      section: this.state.section,
+      handleSection: this.handleSection,
+    });
 
-    handleSection(target) {
+    const main = new Main({
+      section: this.state.section,
+      handleSection: this.handleSection,
+    });
 
-        this.updateRootElement();
-    }
+    const appHtml = new DocumentFragment();
 
-    async render() {
-        await this.initState();
-        const header = new Header({
-            section: this.state.section,
-            handleSection: this.handleSection,
-        });
+    appHtml.appendChild(header.render());
+    appHtml.appendChild(await main.render());
 
-        const appHtml = new DocumentFragment();
-
-        appHtml.appendChild(header.render());
-        appHtml.appendChild(await main.render());
-
-        return appHtml;
-    }
+    return appHtml;
+  }
 }
 
 export default App;

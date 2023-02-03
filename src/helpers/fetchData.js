@@ -11,7 +11,7 @@ async function fetchData(dir, method, body) {
 
   const response = await fetch(url, options);
 
-  return await response.json();
+  return response.json();
 }
 
 export default fetchData;
