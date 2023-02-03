@@ -1,6 +1,7 @@
 import template from "./template";
 import "./style.css";
 import {IState} from "../../interfaces";
+import {IMain} from "../../interfaces";
 
 class Header {
     protected props: IState;

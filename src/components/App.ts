@@ -1,8 +1,8 @@
 import Header from "./header/index";
 import Main from "./main/index";
 
-import fetchData from "../helpers/fetchData";
-import generateRandomCar from "../helpers/helpers";
+//import fetchData from "../helpers/fetchData";
+//import generateRandomCar from "../helpers/helpers";
 import {IState} from "../interfaces";
 import {RestApiTypes} from "../enums";
 
@@ -39,15 +39,12 @@ class App {
         this.updateRootElement();
     }
 
-    handleNextPage() {
-        this.setState({
-            ...this.state,
-            page: this.state.page + 1,
-        });
-        this.updateRootElement();
-    }
+    
 
     handlePrevPage() {
+        if (this.state.page === undefined) {
+            return;
+        }
         this.setState({
             ...this.state,
             page: this.state.page - 1,
@@ -58,19 +55,19 @@ class App {
 
     async render() {
         await this.initState();
-        // const header = new Header({
-        //     section: this.state.section,
-        //     handleSection: this.handleSection,
-        // });
-        //
-        // const main = new Main({
-        //     ...this.state,
-        // });
+        const header = new Header({
+            section: this.state.section,
+            handleSection: this.handleSection,
+        });
+        
+        const main = new Main({
+            ...this.state,
+        });
 
         const appHtml = new DocumentFragment();
 
-        // appHtml.appendChild(header.render());
-        // appHtml.appendChild(await main.render());
+        appHtml.appendChild(header.render());
+        appHtml.appendChild(await main.render());
 
         return appHtml;
     }

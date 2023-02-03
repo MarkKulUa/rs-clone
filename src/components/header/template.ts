@@ -1,4 +1,4 @@
-function template(page: string) {
+function template(page: string | undefined) {
     return `<h1>Rs Clone</h1>
   <nav class="nav">
     <ul class="nav-list">
