@@ -6,7 +6,7 @@ const path = require("path");
 module.exports = {
   mode: "production",
   entry: {
-    main: path.join(__dirname, "src/index.js"),
+    main: path.join(__dirname, "src/index.ts"),
   },
   output: {
     publicPath: "./",
@@ -18,14 +18,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
       },
       {
         test: /\.css$/i,
@@ -40,6 +46,9 @@ module.exports = {
         type: "asset/resource",
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.ts'],
   },
   plugins: [
     new HtmlWebpackPlugin({

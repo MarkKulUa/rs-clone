@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es6",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+         "moduleResolution": "node",
+         "resolveJsonModule": true,
+
+        //    "alwaysStrict": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "strictFunctionTypes": true,
+        "noImplicitThis": true,
+        "strictBindCallApply": true
+    }
+}
