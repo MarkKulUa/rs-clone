@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const EslingPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -14,7 +16,7 @@ module.exports = {
     assetModuleFilename: "assets/[name][ext]",
     clean: true,
   },
-  devtool: "source-map",
+  devtool: "inline-source-map",
   devServer: {
     static: {
       directory: path.join(__dirname, "build"),
@@ -27,6 +29,9 @@ module.exports = {
     port: 3001,
     open: true,
     hot: true,
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
@@ -67,6 +72,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
+    new CleanWebpackPlugin(),
+    new EslingPlugin({ extensions: 'ts' }),
     new CopyPlugin({
       patterns: [
         {

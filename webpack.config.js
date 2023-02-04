@@ -2,9 +2,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const EslingPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: {
     main: path.join(__dirname, "src/index.ts"),
   },
@@ -14,6 +16,9 @@ module.exports = {
     filename: "[name].[contenthash].js",
     assetModuleFilename: "assets/[name][ext]",
     clean: true,
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
@@ -54,6 +59,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
+    new CleanWebpackPlugin(),
+    new EslingPlugin({ extensions: 'ts' }),
     new MiniCssExtractPlugin({
       filename: "style.css",
     }),
