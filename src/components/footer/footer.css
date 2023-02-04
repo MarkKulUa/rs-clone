@@ -1,0 +1,67 @@
+.github-logo {
+  width: 50px;
+  height: 50px;
+
+  background-image: url("../../assets/svg/github.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: 0.3s ease-in-out;
+}
+
+.github-logo:hover {
+  transition: 0.3s all;
+  transform: scale(1.05);
+  filter: var(--filter-blue);
+  cursor: pointer;
+}
+
+.team-developers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rsschool {
+  width: 105px;
+  height: 40px;
+
+  background-image: url("../../assets/svg/rsschool.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: 0.3s ease-in-out;
+}
+
+.rsschool:hover {
+  filter: var(--filter-blue);
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:hover {
+  transition: 0.3s linear;
+  transform: scale(1.05);
+}
+
+.be-developer:hover {
+  color: #cc0000;
+  box-shadow: 0 0.5em 0.5em -0.4em white;
+}
+
+.be-developer:hover {
+  color: #0057b8;
+  box-shadow: 0 0.5em 0.5em -0.4em #ffc400;
+}
+
+/* --- Adaptive 520px ---*/
+
+@media (max-width: 520px) {
+  .app-developer {
+    font-size: 1rem;
+  }
+}

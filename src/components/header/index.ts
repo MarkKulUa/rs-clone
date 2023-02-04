@@ -1,20 +1,20 @@
 import template from "./template";
 import "./style.css";
-import {IState} from "../../interfaces";
-import {IMain} from "../../interfaces";
+import { IState } from "../../types/types";
 
 class Header {
-    protected props: IState;
-    constructor(props: IState) {
-        this.props = props;
-    }
+  protected props: IState;
 
-    render() {
-        const header = document.createElement("header");
-        header.innerHTML = template(this.props.section);
+  constructor(props: IState) {
+    this.props = props;
+  }
 
-        return header;
-    }
+  render() {
+    const header = document.createElement("header");
+    header.innerHTML = template(this.props.section);
+
+    return header;
+  }
 }
 
 export default Header;
