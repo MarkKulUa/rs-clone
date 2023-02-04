@@ -52,9 +52,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.ts'],
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "public/index.html",
