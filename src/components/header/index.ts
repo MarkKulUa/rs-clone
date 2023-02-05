@@ -11,6 +11,8 @@ class Header {
 
   render() {
     const header = document.createElement("header");
+    header.classList.add("header");
+    // header.classList.add("simple_header");
     header.innerHTML = template(this.props.section);
 
     return header;

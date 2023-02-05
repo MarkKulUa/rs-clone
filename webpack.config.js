@@ -57,7 +57,7 @@ module.exports = {
       template: "public/index.html",
     }),
     new CleanWebpackPlugin(),
-    new EslingPlugin({ extensions: 'ts' }),
+    new EslingPlugin({ extensions: "ts" }),
     new MiniCssExtractPlugin({
       filename: "style.css",
     }),

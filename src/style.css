@@ -79,8 +79,7 @@ a {
 h1 {
   font-family: "Techno Race", sans-serif;
   font-size: 5rem;
-  margin: 1.5rem 0;
-  text-align: center;
+  
 }
 
 h2 {
@@ -100,6 +99,12 @@ body {
   background-color: #1c2a33;
 }
 
+.container {
+  max-width: 970px;
+  margin: 0 auto;
+  padding: 0 2rem 0 2rem;
+}
+
 .btn {
   padding: 1rem 2rem;
   font-size: 1.6rem;
@@ -115,33 +120,8 @@ body {
   display: none;
 }
 
-/*  header */
-.nav-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-item:last-child {
-  margin-left: 1rem;
-}
-
-.nav-item .btn {
-  background-color: #01fffd;
-}
-
-.nav-item .btn:hover {
-  box-shadow: 4px 4px 0px #00cccc;
-}
-
-.nav-item .active {
-  box-shadow: 4px 4px 0px #00cccc;
-}
 
 /*  main */
-main {
-  padding: 3rem 2rem;
-}
 
 .sort-icon {
   position: absolute;

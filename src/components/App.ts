@@ -58,8 +58,8 @@ class App {
 
     const appHtml = new DocumentFragment();
 
-    appHtml.appendChild(header.render());
     appHtml.appendChild(await main.render());
+    appHtml.appendChild(header.render());
 
     return appHtml;
   }
