@@ -4,6 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const EslingPlugin = require('eslint-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
   mode: "development",
@@ -73,5 +74,6 @@ module.exports = {
         },
       ],
     }),
+    new FaviconsWebpackPlugin("src/assets/fav/favicon.ico"),
   ],
 };
