@@ -47,6 +47,7 @@ class Footer extends Component {
       "bedunkevichaa",
     );
     this.appYearContainer = new Component(this.elem, "div", ["app-year"], "RS Clone 2023");
+    console.log(this.appYearContainer);
     this.footerRightContainer = new Component(this.elem, "div", ["footer-right"]);
     this.rsschool = new Component(this.footerRightContainer.elem, "a", ["rsschool"]);
 

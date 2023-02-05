@@ -1,5 +1,6 @@
 import Header from "./header/index";
 import Main from "./main/index";
+// import Footer from "./footer/footer";
 import { IState } from "../types/types";
 
 class App {
@@ -53,13 +54,13 @@ class App {
       ...this.state,
     });
 
-    /* const appFooter = new HTMLElement();
-    const footer = new Footer(appFooter); */
+    // const appFooter = new HTMLElement();
+    // const footer = new Footer(appFooter);
 
     const appHtml = new DocumentFragment();
 
-    appHtml.appendChild(header.render());
     appHtml.appendChild(await main.render());
+    appHtml.appendChild(header.render());
 
     return appHtml;
   }
