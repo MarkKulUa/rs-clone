@@ -1,5 +1,5 @@
 import "./style.css";
-import { IMain, IState } from "../../types/interfaces";
+import { IMain, IState } from "../../types/types";
 
 class Main {
   protected props: IMain & IState;
