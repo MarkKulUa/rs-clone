@@ -30,6 +30,9 @@ module.exports = {
     port: 3001,
     open: true,
     hot: true,
+    client: {
+      overlay: false,
+    },
   },
   resolve: {
     extensions: ['.ts', '.js'],
