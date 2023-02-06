@@ -13,7 +13,7 @@ class Main {
     const main = document.createElement("main");
     main.classList.add("main");
 
-    main.innerHTML = template(this.props.section);
+    main.innerHTML = template();
 
     if (this.props.section === "route1") {
       // const module = new Module1(this.props);
