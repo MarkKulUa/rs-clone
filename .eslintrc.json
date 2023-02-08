@@ -20,6 +20,8 @@
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/no-unused-vars": 1,
+    "react/no-unused-class-component-methods": 0,
     "quotes": ["error", "double"],
     "import/extensions": [
       "error",
@@ -32,6 +34,7 @@
       }
     ],
     "linebreak-style": ["error", "windows"],
+    "no-param-reassign": [2, { "props": false }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-underscore-dangle": "off",
     "no-restricted-syntax": "off",
