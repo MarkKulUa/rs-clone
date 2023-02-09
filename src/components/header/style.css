@@ -9,13 +9,13 @@
 
 .logo {
   cursor: pointer;
-  background: url('../../assets/img/masterpage_sprite.png') no-repeat 0 0;
-	width: 167px;
-	height: 30px;
+  background: url("../../assets/img/masterpage_sprite.png") no-repeat 0 0;
+  width: 167px;
+  height: 30px;
 }
 
 .lang-ico {
-  background: url('../../assets/img/inverse_globe.webp') no-repeat;
+  background: url("../../assets/img/inverse_globe.webp") no-repeat;
   height: 16px;
   margin-right: 7px;
   width: 16px;
@@ -41,4 +41,3 @@
   text-decoration: underline;
   text-underline-offset: 5px;
 }
-

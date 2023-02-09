@@ -1,9 +1,8 @@
 import Header from "./header/index";
 import Main from "./main/index";
-// import Footer from "./footer/footer";
 import { IState } from "../types/types";
 
-class App {
+/* class App {
   protected state: IState;
 
   constructor() {
@@ -54,9 +53,6 @@ class App {
       ...this.state,
     });
 
-    // const appFooter = new HTMLElement();
-    // const footer = new Footer(appFooter);
-
     const appHtml = new DocumentFragment();
 
     appHtml.appendChild(await main.render());
@@ -76,4 +72,4 @@ class App {
   }
 }
 
-export default App;
+export default App; */

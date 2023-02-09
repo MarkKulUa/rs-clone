@@ -1,11 +1,9 @@
-import App from "./components/App";
+import App from "./app/app";
 import "./style.css";
 
-async function init() {
-  const root = document.getElementById("app") as HTMLElement;
-  const app = new App();
+window.addEventListener("DOMContentLoaded", () => {
+  const rootElement = document.body;
+  const app = new App(rootElement);
 
-  root?.appendChild(await app.render());
-}
-
-init();
+  app.start();
+});

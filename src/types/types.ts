@@ -12,6 +12,12 @@ export interface IMain {
   handleSection?: (target: HTMLButtonElement) => void;
 }
 
+export interface AppRoute {
+  name: string;
+  // component: (params: string, model: Model, options?: { id: number }) => void;
+  drawComponent: () => void;
+}
+
 export const MAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
 export const SERVER_URL = "http://localhost:3000";

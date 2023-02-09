@@ -1,4 +1,4 @@
-function template(page: string | undefined) {
+function template(page?: string | undefined) {
   return `<div class="container simple_header">
     <div class="logo"></div>
     <nav class="nav">

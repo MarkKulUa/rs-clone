@@ -16,6 +16,11 @@ class Component {
     }
   }
 
+  appendHTML(template: string): HTMLElement {
+    this.elem.innerHTML += template;
+    return this.elem;
+  }
+
   delete(): void {
     this.elem.remove();
   }

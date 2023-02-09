@@ -14,7 +14,7 @@ class Footer extends Component {
 
   private thirdTeamDeveloperLink;
 
-  private appYearContainer;
+  public appYearContainer;
 
   private footerRightContainer;
 
@@ -47,13 +47,12 @@ class Footer extends Component {
       "bedunkevichaa",
     );
     this.appYearContainer = new Component(this.elem, "div", ["app-year"], "RS Clone 2023");
-    console.log(this.appYearContainer);
     this.footerRightContainer = new Component(this.elem, "div", ["footer-right"]);
     this.rsschool = new Component(this.footerRightContainer.elem, "a", ["rsschool"]);
 
     this.githubLogo.elem.setAttribute(
       "href",
-      "https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store-team",
+      "https://github.com/rolling-scopes-school/tasks/tree/master/stage2/modules/final-task",
     );
     this.firstTeamDeveloperLink.elem.setAttribute("href", "https://github.com/elinven");
     this.firstTeamDeveloperLink.elem.setAttribute("target", "_blank");
