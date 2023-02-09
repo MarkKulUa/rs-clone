@@ -14,9 +14,9 @@ import { IState } from "../types/types";
     };
   }
 
-  async initState() {
-    const { page, perPage } = this.state;
-  }
+  // async initState() {
+  //   const { page, perPage } = this.state;
+  // }
 
   handleSection(target: HTMLButtonElement) {
     if (target.dataset.page === "section1") {
@@ -43,7 +43,7 @@ import { IState } from "../types/types";
   }
 
   async render() {
-    await this.initState();
+    // await this.initState();
     const header = new Header({
       section: this.state.section,
       handleSection: this.handleSection,

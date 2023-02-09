@@ -1,4 +1,4 @@
-function template(page: string | undefined) {
+function template() {
   return `
     <div class="container">
       <div class="title_wrapper">
