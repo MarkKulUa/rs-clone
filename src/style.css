@@ -1,13 +1,14 @@
 /* main */
 :root {
-  --color-header: white;
-  --color-header-bg: #1c2a33;
-  --color-footer: white;
-  --color-footer-bg: #1c2a33;
-  --color-footer-hover: #cc0000;
-  --color-bg: white;
-  --color-font: #595959;
-  --color-hover: #f56932;
+  --header-color: white;
+  --header-bg-color: #595959;
+  --footer-color: white;
+  --footer-bg-color: #595959;
+  --footer-hover-color: #cc0000;
+  --bg-color: #1c2a33;
+  --font-color: #595959;
+  --hover-color: #f56932;
+  /*#fc702d;*/
   --color-button-bg: #21262d;
   --color-bg-hover: #4c555d;
   --color-border: #4c555d;
@@ -20,20 +21,20 @@
 }
 
 @font-face {
-  font-family: "Techno Race";
-  src: url("./assets/fonts/TechnoRace-Italic.woff2") format("woff2"),
-    url("./assets/fonts/TechnoRace-Italic.woff") format("woff");
+  font-family: "Helvetica";
+  src: url("./assets/fonts/Helvetica/Helvetica.woff2") format("woff2"),
+    url("./assets/fonts/Helvetica/Helvetica.woff") format("woff");
   font-weight: normal;
-  font-style: italic;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Audiowide";
-  src: url("./assets/fonts/Audiowide-Regular.woff2") format("woff2"),
-    url("./assets/fonts/Audiowide-Regular.woff") format("woff");
+  font-family: "Helvetica";
+  src: url("./assets/fonts/Helvetica/Helvetica-Oblique.woff2") format("woff2"),
+    url("./assets/fonts/Helvetica/Helvetica-Oblique.woff") format("woff");
   font-weight: normal;
-  font-style: normal;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -79,7 +80,6 @@ a {
 h1 {
   font-family: "Techno Race", sans-serif;
   font-size: 5rem;
-  
 }
 
 h2 {
@@ -93,10 +93,17 @@ h3 {
 }
 
 body {
-  font-family: "Audiowide", cursive;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  font-family: "Helvetica", cursive;
   font-size: 1.6rem;
-  color: #fff;
-  background-color: #1c2a33;
+
+  background: var(--bg-color);
+  background-repeat: no-repeat;
+  color: white;
 }
 
 .container {
@@ -119,7 +126,6 @@ body {
 .hidden {
   display: none;
 }
-
 
 /*  main */
 

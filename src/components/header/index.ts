@@ -1,8 +1,9 @@
+import Component from "../../utils/component";
 import template from "./template";
 import "./style.css";
-import { IState } from "../../types/types";
+// import { IState } from "../../types/types";
 
-class Header {
+/* class Header {
   protected props: IState;
 
   constructor(props: IState) {
@@ -34,6 +35,19 @@ class Header {
 
     return header;
   }
+} */
+
+class Header extends Component {
+  constructor(parentNode: HTMLElement) {
+    super(parentNode, "header", ["header"]);
+    this.appendHTML(template());
+  }
+
+  /* render() {
+    this.elem.innerHTML = template();
+
+    return this.elem;
+  } */
 }
 
 export default Header;
