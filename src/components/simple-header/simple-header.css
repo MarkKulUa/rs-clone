@@ -30,8 +30,8 @@
 }
 
 .nav-list {
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   justify-content: center;
   font-size: calc(1rem + 0.5vw);
 }
