@@ -71,6 +71,9 @@
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
+
+  color: white;
+  font-size: calc(1rem + 0.5vw);
 }
 
 .lang-item {
@@ -80,8 +83,6 @@
 }
 
 .lang-link {
-  color: white;
-
   transition: 0.3s;
 
   cursor: pointer;
