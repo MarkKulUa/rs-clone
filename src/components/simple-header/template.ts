@@ -1,4 +1,4 @@
-function template(page?: string | undefined) {
+function template() {
   return `
   <div class="logo"></div>
   <nav class="nav">
@@ -30,7 +30,8 @@ function template(page?: string | undefined) {
       </div>
       </li>
     </ul>
-  </nav>`;
+  </nav>
+  <div class="overlay"></div>`;
 }
 
 export default template;

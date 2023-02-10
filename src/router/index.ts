@@ -1,6 +1,8 @@
 import { AppRoute } from "../types/types";
 import Component from "../utils/component";
 import TitlePage from "../pages/title/title";
+import AboutProject from "../pages/about-project";
+import burgerAction from "../components/simple-header/burger-action";
 
 class Router {
   // model: Model;
@@ -10,6 +12,8 @@ class Router {
   private defaultRoute: AppRoute;
 
   titlePage?: Component;
+
+  aboutPage?: Component;
 
   projectPage?: Component;
 
@@ -26,6 +30,12 @@ class Router {
         name: "/",
         drawComponent: () => {
           this.titlePage = new TitlePage(this.rootElement);
+        },
+      },
+      {
+        name: "/about-project",
+        drawComponent: () => {
+          this.aboutPage = new AboutProject(this.rootElement);
         },
       },
       /* {
@@ -58,34 +68,35 @@ class Router {
 
     (currRoute || this.defaultRoute).drawComponent();
 
-    /* const currRouteFromHash = window.location.hash.slice(1);
-    const [pagePathName, id = null] = currRouteFromHash.split("/").filter((item) => !!item);
+    // /* const currRouteFromHash = window.location.hash.slice(1);
+    // const [pagePathName, id = null] = currRouteFromHash.split("/").filter((item) => !!item);
 
-    const currRouteArray = currRouteFromHash.split("?");
-    const currRouteName = currRouteArray[0];
-    let currRouteParam = "";
-    if (currRouteArray.length > 1) {
-      currRouteParam = String(currRouteArray[1]);
-    }
+    // const currRouteArray = currRouteFromHash.split("?");
+    // const currRouteName = currRouteArray[0];
+    // let currRouteParam = "";
+    // if (currRouteArray.length > 1) {
+    //   currRouteParam = String(currRouteArray[1]);
+    // }
 
-    const currRoute = this.routes.find(
-      (page) => page.name === currRouteName || page.name === `/${pagePathName}/`,
-    ); */
+    // const currRoute = this.routes.find(
+    //   (page) => page.name === currRouteName || page.name === `/${pagePathName}/`,
+    // ); */
 
-    /* if (!currRoute) {
-      this.currentRoute = currRouteName;
-      this.defaultRoute.component(currRouteParam, this.model);
-    } else {
-      !currRouteParam
-        ? (window.location.hash = currRouteFromHash)
-        : (window.location.hash = `${currRoute.name}?${currRouteParam}`);
-      if (id) {
-        currRoute.component(currRouteParam, this.model, { id: +id });
-      } else {
-        currRoute.component(currRouteParam, this.model);
-      }
-      this.currentRoute = currRoute.name;
-    } */
+    // /* if (!currRoute) {
+    //   this.currentRoute = currRouteName;
+    //   this.defaultRoute.component(currRouteParam, this.model);
+    // } else {
+    //   !currRouteParam
+    //     ? (window.location.hash = currRouteFromHash)
+    //     : (window.location.hash = `${currRoute.name}?${currRouteParam}`);
+    //   if (id) {
+    //     currRoute.component(currRouteParam, this.model, { id: +id });
+    //   } else {
+    //     currRoute.component(currRouteParam, this.model);
+    //   }
+    //   this.currentRoute = currRoute.name;
+    // } */
+    burgerAction();
   }
 
   initRouter(): void {
