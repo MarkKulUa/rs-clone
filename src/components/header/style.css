@@ -28,6 +28,7 @@
 
 .nav-list {
   display: flex;
+  margin-right: 20px;
   align-items: center;
   justify-content: center;
   font-size: calc(1rem + 0.5vw);
@@ -52,6 +53,7 @@
 .burger {
   display: none;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .line1,

@@ -17,8 +17,10 @@ function template() {
       <li class="nav-item">
         <a href="#" id="team">About us</a>
       </li>
-      <li class="nav-item">
-        <div class="lang-container">
+    </ul>
+    
+  </nav>
+  <div class="lang-container">
           <div class="lang-ico"></div>
           <ul class="lang-list">
               <li class="lang-item"><span class="lang-link" data-language="be">be</span></li>
@@ -28,9 +30,6 @@ function template() {
               <li class="lang-item"><span class="lang-link" data-language="uk">uk</span></li>
           </ul>
       </div>
-      </li>
-    </ul>
-  </nav>
   <div class="overlay"></div>`;
 }
 
