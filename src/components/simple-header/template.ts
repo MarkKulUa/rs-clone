@@ -1,6 +1,6 @@
 function template() {
   return `
-  <div class="logo"></div>
+  <a class="nav-link logo" href="#/"></a>
   <nav class="nav">
   <div class="burger" id="burger-menu">
     <div class="line1"></div>
@@ -9,13 +9,13 @@ function template() {
   </div>
     <ul class="nav-list">
       <li class="nav-item">
-        <a href="#" id="about">About</a>
+        <a class="nav-link" href="#/about" id="about">About</a>
       </li>
       <li class="nav-item">
-        <a href="#" id="login">Log in</a>
+        <a class="nav-link" href="#/login" id="login">Log in</a>
       </li>
       <li class="nav-item">
-        <a href="#" id="team">About us</a>
+        <a class="nav-link" href="#/team" id="team">About us</a>
       </li>
       <li class="nav-item">
         <div class="lang-container">

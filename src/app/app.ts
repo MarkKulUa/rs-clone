@@ -1,7 +1,6 @@
-import Header from "../components/header";
+import Header from "../components/header/header";
 import Component from "../utils/component";
 import Router from "../router";
-// import AboutProject from "../pages/about-project";
 import Footer from "../components/footer/footer";
 
 class App {
@@ -11,11 +10,7 @@ class App {
 
   private router;
 
-  // private about;
-
   private footer;
-
-  isHeader = false;
 
   constructor(private rootElement: HTMLElement) {
     const isHeader = false;
@@ -26,7 +21,6 @@ class App {
     }
     this.main = new Component(this.rootElement, "main", ["main"]);
     this.router = new Router(this.main.elem);
-    // this.about = new AboutProject(this.rootElement);
     this.footer = new Footer(this.rootElement);
   }
 

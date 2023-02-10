@@ -17,9 +17,9 @@ class Router {
 
   aboutPage?: Component;
 
-  projectPage?: Component;
+  // projectPage?: Component;
 
-  simpleHeader?: Component;
+  // simpleHeader?: Component;
 
   /* cartPage: Component | undefined;
 
@@ -37,21 +37,21 @@ class Router {
         },
       },
       {
-        name: "/about-project",
+        name: "/about",
         drawComponent: () => {
           this.aboutPage = new AboutProject(this.rootElement);
         },
       },
       /* {
-        name: "/project/",
+        name: "/login",
         drawComponent: () => {
-          this.projectPage = new ProjectPage(this.rootElement);
+          this.projectPage = new LoginPage(this.rootElement);
         },
       }, */
       /* {
-        name: "/cart",
+        name: "/team",
         drawComponent: () => {
-          this.commandPage = new CommandPage(this.rootElement);
+          this.commandPage = new TeamPage(this.rootElement);
         },
       }, */
     ];
@@ -63,7 +63,7 @@ class Router {
       drawComponent: () => {
         this.titlePage = new TitlePage(this.rootElement);
         // this.simpleHeader = new SimpleHeader(this.rootElement);
-        this.aboutPage = new AboutProject(this.rootElement);
+        // this.aboutPage = new AboutProject(this.rootElement);
       },
     };
   }
@@ -72,38 +72,44 @@ class Router {
     const currRouteFromHash = window.location.hash.slice(1);
     const currRoute = this.routes.find((page) => page.name === currRouteFromHash);
 
+    console.log(currRoute);
+
     (currRoute || this.defaultRoute).drawComponent();
 
     // /* const currRouteFromHash = window.location.hash.slice(1);
     // const [pagePathName, id = null] = currRouteFromHash.split("/").filter((item) => !!item);
 
-    // const currRouteArray = currRouteFromHash.split("?");
-    // const currRouteName = currRouteArray[0];
-    // let currRouteParam = "";
-    // if (currRouteArray.length > 1) {
-    //   currRouteParam = String(currRouteArray[1]);
-    // }
+    const currRouteArray = currRouteFromHash.split("?");
+    const currRouteName = currRouteArray[0];
+    let currRouteParam = "";
+    if (currRouteArray.length > 1) {
+      currRouteParam = String(currRouteArray[1]);
+    }
 
     // const currRoute = this.routes.find(
     //   (page) => page.name === currRouteName || page.name === `/${pagePathName}/`,
     // ); */
 
-    // /* if (!currRoute) {
-    //   this.currentRoute = currRouteName;
-    //   this.defaultRoute.component(currRouteParam, this.model);
-    // } else {
-    //   !currRouteParam
-    //     ? (window.location.hash = currRouteFromHash)
-    //     : (window.location.hash = `${currRoute.name}?${currRouteParam}`);
-    //   if (id) {
-    //     currRoute.component(currRouteParam, this.model, { id: +id });
-    //   } else {
-    //     currRoute.component(currRouteParam, this.model);
-    //   }
-    //   this.currentRoute = currRoute.name;
-    // } */
-    burgerAction();
-    window.onscroll = handleElementScroll;
+    if (!currRoute) {
+      this.currentRoute = currRouteName;
+      // this.defaultRoute.drawComponent(currRouteParam, this.model);
+    } else {
+      if (!currRouteParam) {
+        window.location.hash = currRouteFromHash;
+      } else {
+        window.location.hash = `${currRoute.name}?${currRouteParam}`;
+      }
+      //  ? (window.location.hash = currRouteFromHash)
+      //  : (window.location.hash = `${currRoute.name}?${currRouteParam}`);
+      //   if (id) {
+      //     currRoute.component(currRouteParam, this.model, { id: +id });
+      //   } else {
+      //     currRoute.component(currRouteParam, this.model);
+      //   }
+      this.currentRoute = currRoute.name;
+    }
+    // burgerAction();
+    // window.onscroll = handleElementScroll;
   }
 
   initRouter(): void {

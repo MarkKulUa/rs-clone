@@ -11,6 +11,8 @@
 }
 
 .title-container {
+  /*position: relative;*/
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -37,7 +39,6 @@
   font-size: 58px;
   font-weight: 700;
   line-height: 62px;
-
 }
 
 .title-page .title-wrapper p {

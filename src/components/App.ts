@@ -1,4 +1,4 @@
-import Header from "./header/index";
+import Header from "./header/header";
 import Main from "./main/index";
 import { IState } from "../types/types";
 

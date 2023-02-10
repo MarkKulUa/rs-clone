@@ -1,3 +1,6 @@
+.about-container {
+  position: relative;
+}
 
 .about-project-container {
   align-items: center;
@@ -7,11 +10,9 @@
 .animate-wrapper {
   padding: 75px 0;
   display: flex;
-  
+
   align-items: center;
 }
-
-
 
 .image {
   background-image: url("../../assets/img/main&about/deep-nostalgia_bg.webp");
@@ -28,7 +29,7 @@
   flex: 1;
   flex-direction: column;
   font-size: 18px;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
   line-height: 28px;
   margin-right: 95px;
   text-align: start;
@@ -69,12 +70,10 @@
   letter-spacing: 1px;
   line-height: 56px;
   margin: 0 0 27px;
-
 }
 
 .family-tree-wrapper .family-tree-text {
   margin: 0 0 12px;
-
 }
 
 .family-tree-section .tree-chart {
@@ -95,7 +94,7 @@
   position: absolute;
   left: 75px;
   top: 0;
-  background: url('../../assets/img/main&about/animation_sprite.png');
+  background: url("../../assets/img/main&about/animation_sprite.png");
   background-position: -524px -709px;
   width: 106px;
   height: 43px;
@@ -107,7 +106,7 @@
   position: absolute;
   right: 75px;
   top: 0;
-  background: url('../../assets/img/main&about/animation_sprite.png');
+  background: url("../../assets/img/main&about/animation_sprite.png");
   background-position: -633px -709px;
   width: 106px;
   height: 43px;
@@ -176,7 +175,7 @@
 }
 
 .animation-item {
-  background-image: url('../../assets/img/main&about/animation_sprite.png');
+  background-image: url("../../assets/img/main&about/animation_sprite.png");
 }
 
 .parent-father-container {
@@ -249,8 +248,5 @@
   opacity: 0.8;
 }
 
-
-@media screen and (max-width:768px) {
-
- 
+@media screen and (max-width: 768px) {
 }
