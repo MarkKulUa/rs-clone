@@ -4,16 +4,17 @@ import "./style.css";
 
 class AboutProject extends Component {
   // private titlePage;
-  private aboutPageContainer;
+  // private aboutPageContainer;
 
   // private simpleHeader: SimpleHeader;
 
   constructor(parentNode: HTMLElement) {
     parentNode.innerHTML = "";
-    super(parentNode, "div", ["about-roject"]);
-    this.aboutPageContainer = new Component(this.elem, "div", ["about-project-container", "container"], "");
-    // this.simpleHeader = new SimpleHeader(this.titlePageContainer.elem);
-    this.aboutPageContainer.appendHTML(template());
+    super(parentNode, "div", ["about-project"]);
+    // this.aboutPageContainer = new Component(
+    // this.elem, "div", ["about-project-container", "container"], "");
+    // this.aboutPageContainer.appendHTML(template());
+    this.appendHTML(template());
   }
 }
 

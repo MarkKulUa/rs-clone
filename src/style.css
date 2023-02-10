@@ -101,9 +101,9 @@ body {
   font-family: "Helvetica", cursive;
   font-size: 1.6rem;
 
-  background: var(--bg-color);
+  background: var(--footer-color);
   background-repeat: no-repeat;
-  color: white;
+  color: black;
 }
 
 .container {

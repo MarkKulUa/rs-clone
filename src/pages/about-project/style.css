@@ -2,11 +2,13 @@
 .about-project-container {
   align-items: center;
   display: flex;
-
+  flex-direction: column;
 }
 .animate-wrapper {
   padding: 75px 0;
   display: flex;
+  
+  align-items: center;
 }
 
 
@@ -20,7 +22,7 @@
   width: 550px;
 }
 
-.about-project .title-wrapper {
+.animate-wrapper .title-wrapper {
   color: #333;
   display: flex;
   flex: 1;
@@ -33,13 +35,220 @@
   align-self: center;
 }
 
-.about-project .title {
+.animate-wrapper .title {
   color: #000;
   font-size: 48px;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 52px;
+  margin-bottom: 15px;
 }
+
+/* .family-tree-wrapper .title-wrapper {
+  margin: 0 auto;
+} */
+.family-tree-section {
+  background-color: #bccd8f;
+}
+
+.family-tree-wrapper {
+  color: #f4f0e5;
+  font-size: 18px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.family-tree-wrapper .title-wrapper {
+  margin: 0 auto 20px;
+  max-width: 720px;
+}
+.family-tree-wrapper .title {
+  color: inherit;
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 56px;
+  margin: 0 0 27px;
+
+}
+
+.family-tree-wrapper .family-tree-text {
+  margin: 0 0 12px;
+
+}
+
+.family-tree-section .tree-chart {
+  margin: 0 auto 4px;
+  padding: 30px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.tree-chart-animation {
+  position: relative;
+  width: 555px;
+  height: 377px;
+  margin: 0 auto;
+}
+
+.father-parents {
+  position: absolute;
+  left: 75px;
+  top: 0;
+  background: url('../../assets/img/main&about/animation_sprite.png');
+  background-position: -524px -709px;
+  width: 106px;
+  height: 43px;
+
+  opacity: 0;
+}
+
+.mother-parents {
+  position: absolute;
+  right: 75px;
+  top: 0;
+  background: url('../../assets/img/main&about/animation_sprite.png');
+  background-position: -633px -709px;
+  width: 106px;
+  height: 43px;
+
+  opacity: 0;
+}
+
+.mother-connector {
+  right: 117px;
+}
+
+.parents-connector {
+  position: absolute;
+  top: 22px;
+  width: 20px;
+}
+
+.parents-connector .horizontal-line {
+  position: absolute;
+  border-top: 1px solid #fff;
+  width: 20px;
+  height: 1px;
+}
+
+.parents-connector .vertical-line {
+  position: absolute;
+  left: 10px;
+  border-left: 1px solid #fff;
+  width: 1px;
+  height: 60px;
+}
+
+.father-connector {
+  left: 117px;
+}
+
+.parent-mother-container {
+  right: 0;
+  opacity: 0;
+  transform: scale(1) translateY(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.parent-container {
+  position: absolute;
+  top: 75px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #fff;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.mother-container {
+  position: relative;
+  left: 23px;
+  top: 34px;
+}
+
+.mother {
+  position: relative;
+  background-position: -266px -496px;
+  width: 260px;
+  height: 261px;
+}
+
+.animation-item {
+  background-image: url('../../assets/img/main&about/animation_sprite.png');
+}
+
+.parent-father-container {
+  left: 0;
+  opacity: 0;
+  transform: scale(1) translateY(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.father-container {
+  position: relative;
+  left: 0;
+  top: 22px;
+}
+
+.father {
+  background-position: -2px -498px;
+  width: 260px;
+  height: 261px;
+  position: relative;
+}
+
+.mother-father-connector {
+  top: 200px;
+  left: 250px;
+  width: 56px;
+  z-index: -1;
+}
+
+.mother-father-connector .horizontal-line {
+  width: 56px;
+}
+
+.mother-father-connector .vertical-line {
+  left: 27px;
+  height: 180px;
+}
+
+.login-button {
+  font-size: 23px;
+  line-height: 29px;
+  min-width: 213px;
+  padding: 8px 20px 10px;
+}
+
+.button {
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #f56932;
+  border-color: #f56932;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 0;
+  min-width: 7.5em;
+  outline: 0;
+  padding: 0.5em 1.33em;
+  text-align: center;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
 
 @media screen and (max-width:768px) {
 

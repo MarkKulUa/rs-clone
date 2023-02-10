@@ -17,7 +17,7 @@
   align-items: flex-end;
 }
 
-.title-wrapper {
+.title-page .title-wrapper {
   margin: 250px 0 0 0;
   max-width: 445px;
   display: flex;
@@ -28,20 +28,18 @@
   font-size: 22px;
   letter-spacing: 0.3px;
   line-height: 28px;
-
   color: white;
 }
 
-.title {
+.title-page .title {
   margin-bottom: 15px;
 
   font-size: 58px;
   font-weight: 700;
   line-height: 62px;
 
-  color: #ffffff;
 }
 
-.title-wrapper p {
+.title-page .title-wrapper p {
   letter-spacing: 1px;
 }

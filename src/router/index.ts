@@ -2,7 +2,9 @@ import { AppRoute } from "../types/types";
 import Component from "../utils/component";
 import TitlePage from "../pages/title/title";
 import AboutProject from "../pages/about-project";
+import SimpleHeader from "../components/simple-header/simple-header";
 import burgerAction from "../components/simple-header/burger-action";
+import handleElementScroll from "../pages/about-project/animation";
 
 class Router {
   // model: Model;
@@ -16,6 +18,8 @@ class Router {
   aboutPage?: Component;
 
   projectPage?: Component;
+
+  simpleHeader?: Component;
 
   /* cartPage: Component | undefined;
 
@@ -58,6 +62,8 @@ class Router {
       name: "",
       drawComponent: () => {
         this.titlePage = new TitlePage(this.rootElement);
+        // this.simpleHeader = new SimpleHeader(this.rootElement);
+        this.aboutPage = new AboutProject(this.rootElement);
       },
     };
   }
@@ -97,6 +103,7 @@ class Router {
     //   this.currentRoute = currRoute.name;
     // } */
     burgerAction();
+    window.onscroll = handleElementScroll;
   }
 
   initRouter(): void {
