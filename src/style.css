@@ -101,15 +101,15 @@ body {
   font-family: "Helvetica", cursive;
   font-size: 1.6rem;
 
-  background: var(--bg-color);
+  background: var(--footer-color);
   background-repeat: no-repeat;
-  color: white;
+  color: black;
 }
 
 .container {
   max-width: 970px;
   margin: 0 auto;
-  padding: 0 2rem 0 2rem;
+  padding: 0 1rem 0 1rem;
 }
 
 .btn {

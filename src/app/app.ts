@@ -1,4 +1,4 @@
-import Header from "../components/header";
+import Header from "../components/header/header";
 import Component from "../utils/component";
 import Router from "../router";
 import Footer from "../components/footer/footer";
@@ -11,8 +11,6 @@ class App {
   private router;
 
   private footer;
-
-  isHeader = false;
 
   constructor(private rootElement: HTMLElement) {
     const isHeader = false;

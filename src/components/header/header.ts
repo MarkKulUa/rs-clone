@@ -1,6 +1,6 @@
 import Component from "../../utils/component";
 import template from "./template";
-import "./style.css";
+import "./header.css";
 // import { IState } from "../../types/types";
 
 /* class Header {

@@ -1,4 +1,6 @@
-.simple_header {
+/* ЭТОТ ХИДЕР НЕРАБОЧИЙ !!! */
+
+/*.simple_header {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -28,9 +30,11 @@
 
 .nav-list {
   display: flex;
+  margin-right: 20px;
   align-items: center;
   justify-content: center;
   font-size: calc(1rem + 0.5vw);
+  color: white;
   transition-duration: 0.25s;
 }
 
@@ -51,6 +55,7 @@
 .burger {
   display: none;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .line1,
@@ -160,4 +165,4 @@
     animation: showNav 0.7s ease forwards;
     display: flex;
   }
-}
+}*/

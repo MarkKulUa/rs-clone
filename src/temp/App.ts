@@ -1,6 +1,6 @@
-import Header from "./header/index";
-import Main from "./main/index";
 import { IState } from "../types/types";
+import Header from "../components/header/header";
+import Main from "../components/main";
 
 /* class App {
   protected state: IState;

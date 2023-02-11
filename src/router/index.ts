@@ -1,6 +1,9 @@
 import { AppRoute } from "../types/types";
 import Component from "../utils/component";
 import TitlePage from "../pages/title/title";
+import AboutProject from "../pages/about/about";
+import burgerAction from "../components/simple-header/burger-action";
+import handleElementScroll from "../pages/about/animation";
 
 class Router {
   // model: Model;
@@ -11,11 +14,11 @@ class Router {
 
   titlePage?: Component;
 
-  projectPage?: Component;
+  aboutPage?: Component;
 
-  /* cartPage: Component | undefined;
+  // teamPage?: Component;
 
-  errorPage: Component | undefined; */
+  // errorPage: Component | undefined;
 
   currentRoute: string;
 
@@ -28,16 +31,22 @@ class Router {
           this.titlePage = new TitlePage(this.rootElement);
         },
       },
-      /* {
-        name: "/project/",
+      {
+        name: "/about",
         drawComponent: () => {
-          this.projectPage = new ProjectPage(this.rootElement);
+          this.aboutPage = new AboutProject(this.rootElement);
+        },
+      },
+      /* {
+        name: "/login",
+        drawComponent: () => {
+          this.projectPage = new LoginPage(this.rootElement);
         },
       }, */
       /* {
-        name: "/cart",
+        name: "/team",
         drawComponent: () => {
-          this.commandPage = new CommandPage(this.rootElement);
+          this.commandPage = new TeamPage(this.rootElement);
         },
       }, */
     ];
@@ -48,6 +57,8 @@ class Router {
       name: "",
       drawComponent: () => {
         this.titlePage = new TitlePage(this.rootElement);
+        // this.simpleHeader = new SimpleHeader(this.rootElement);
+        // this.aboutPage = new AboutProject(this.rootElement);
       },
     };
   }
@@ -58,8 +69,8 @@ class Router {
 
     (currRoute || this.defaultRoute).drawComponent();
 
-    /* const currRouteFromHash = window.location.hash.slice(1);
-    const [pagePathName, id = null] = currRouteFromHash.split("/").filter((item) => !!item);
+    // /* const currRouteFromHash = window.location.hash.slice(1);
+    // const [pagePathName, id = null] = currRouteFromHash.split("/").filter((item) => !!item);
 
     const currRouteArray = currRouteFromHash.split("?");
     const currRouteName = currRouteArray[0];
@@ -68,24 +79,30 @@ class Router {
       currRouteParam = String(currRouteArray[1]);
     }
 
-    const currRoute = this.routes.find(
-      (page) => page.name === currRouteName || page.name === `/${pagePathName}/`,
-    ); */
+    // const currRoute = this.routes.find(
+    //   (page) => page.name === currRouteName || page.name === `/${pagePathName}/`,
+    // ); */
 
-    /* if (!currRoute) {
+    if (!currRoute) {
       this.currentRoute = currRouteName;
-      this.defaultRoute.component(currRouteParam, this.model);
+      // this.defaultRoute.drawComponent(currRouteParam, this.model);
     } else {
-      !currRouteParam
-        ? (window.location.hash = currRouteFromHash)
-        : (window.location.hash = `${currRoute.name}?${currRouteParam}`);
-      if (id) {
-        currRoute.component(currRouteParam, this.model, { id: +id });
+      if (!currRouteParam) {
+        window.location.hash = currRouteFromHash;
       } else {
-        currRoute.component(currRouteParam, this.model);
+        window.location.hash = `${currRoute.name}?${currRouteParam}`;
       }
+      //  ? (window.location.hash = currRouteFromHash)
+      //  : (window.location.hash = `${currRoute.name}?${currRouteParam}`);
+      //   if (id) {
+      //     currRoute.component(currRouteParam, this.model, { id: +id });
+      //   } else {
+      //     currRoute.component(currRouteParam, this.model);
+      //   }
       this.currentRoute = currRoute.name;
-    } */
+    }
+    burgerAction();
+    window.onscroll = handleElementScroll;
   }
 
   initRouter(): void {
