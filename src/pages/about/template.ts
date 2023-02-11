@@ -1,17 +1,5 @@
 function template() {
   return `
-    <section class="animate-section">
-      <div class="container about-project-conainer">
-        <div class="animate-wrapper">
-          <div class="title-wrapper">
-            <h2 class="title">Animate your family photos</h2>
-            <p>Deep Nostalgia™ — the sensation that’s taken the internet by storm!<br>
-            <b>Over 106 million animations and counting!</b></p>
-          </div>
-          <div class="image"></div>
-        </div>
-      </div>
-    </section>
     <section class="family-tree-section">
       <div class="container family-tree-container">
         <div class="family-tree-wrapper">
@@ -48,6 +36,18 @@ function template() {
             </div>
             <a class="button login-button">Log in</a>
           </div>
+        </div>
+      </div>
+    </section>
+    <section class="animate-section">
+      <div class="container about-project-conainer">
+        <div class="animate-wrapper">
+          <div class="title-wrapper">
+            <h2 class="title">Animate your family photos</h2>
+            <p>Deep Nostalgia™ — the sensation that’s taken the internet by storm!<br>
+            <b>Over 106 million animations and counting!</b></p>
+          </div>
+          <div class="image"></div>
         </div>
       </div>
     </section>
