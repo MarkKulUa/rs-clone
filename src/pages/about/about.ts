@@ -1,6 +1,6 @@
 import template from "./template";
 import Component from "../../utils/component";
-import "./style.css";
+import "./about.css";
 import SimpleHeader from "../../components/simple-header/simple-header";
 
 class AboutProject extends Component {

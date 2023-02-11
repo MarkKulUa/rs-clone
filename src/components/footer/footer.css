@@ -95,6 +95,10 @@
 
 @media (max-width: 520px) {
   .app-developer {
-    font-size: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .app-year {
+    font-size: 1.8rem;
   }
 }

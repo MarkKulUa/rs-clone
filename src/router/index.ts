@@ -1,10 +1,9 @@
 import { AppRoute } from "../types/types";
 import Component from "../utils/component";
 import TitlePage from "../pages/title/title";
-import AboutProject from "../pages/about-project";
-import SimpleHeader from "../components/simple-header/simple-header";
+import AboutProject from "../pages/about/about";
 import burgerAction from "../components/simple-header/burger-action";
-import handleElementScroll from "../pages/about-project/animation";
+import handleElementScroll from "../pages/about/animation";
 
 class Router {
   // model: Model;
@@ -17,13 +16,9 @@ class Router {
 
   aboutPage?: Component;
 
-  // projectPage?: Component;
+  // teamPage?: Component;
 
-  // simpleHeader?: Component;
-
-  /* cartPage: Component | undefined;
-
-  errorPage: Component | undefined; */
+  // errorPage: Component | undefined;
 
   currentRoute: string;
 
@@ -72,8 +67,6 @@ class Router {
     const currRouteFromHash = window.location.hash.slice(1);
     const currRoute = this.routes.find((page) => page.name === currRouteFromHash);
 
-    console.log(currRoute);
-
     (currRoute || this.defaultRoute).drawComponent();
 
     // /* const currRouteFromHash = window.location.hash.slice(1);
@@ -108,8 +101,8 @@ class Router {
       //   }
       this.currentRoute = currRoute.name;
     }
-    // burgerAction();
-    // window.onscroll = handleElementScroll;
+    burgerAction();
+    window.onscroll = handleElementScroll;
   }
 
   initRouter(): void {

@@ -17,14 +17,11 @@ class SimpleHeader extends Component {
   }
 
   private setActiveItem(): void {
-    console.log(this.navLinks);
     this.navLinks.forEach((item) => {
-      console.log(window.location.hash);
       item.classList.remove("active");
       if (item.getAttribute("href") === window.location.hash) {
         item.classList.add("active");
       }
-      // return item;
     });
   }
 }

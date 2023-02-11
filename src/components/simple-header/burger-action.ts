@@ -3,11 +3,7 @@ function burgerAction() {
   const nav = document.querySelector(".nav-list") as HTMLElement;
   const overlay = document.querySelector(".overlay") as HTMLElement;
 
-  console.log(burger);
-  console.log(nav);
-  console.log(overlay);
   burger.addEventListener("click", () => {
-    console.log("burger clicked");
     nav.classList.toggle("show");
     burger.classList.toggle("open");
     overlay.classList.toggle("overlay-active");
