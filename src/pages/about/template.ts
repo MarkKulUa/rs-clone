@@ -51,6 +51,27 @@ function template() {
         </div>
       </div>
     </section>
+    <section class="records-section">
+      <div class="records-section-container">
+        <div class="records-text-container">
+          <div class="records-text">
+            <h2 class="title">Search billions of records</h2>
+            <p class="subtitle">Dive into our huge international records database – just search a name to learn more about your ancestors. With exclusive content and accurate results we'll help you uncover more than you ever imagined.</p>
+          </div>
+        </div>
+        <div class="records-animation-wrapper">
+          <div class="records-animation">
+            <div class="passport-record animation-item"></div>
+            <div class="census-record animation-item"></div>
+            <div class="newspapers-record animation-item"></div>
+            <div class="man-record animation-item"></div>
+            <div class="woman-record animation-item"></div>
+            <div class="railway-record animation-item"></div>
+            <div class="letter-record animation-item"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   `;
 }
 

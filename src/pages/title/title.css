@@ -27,7 +27,7 @@
   justify-content: flex-end;
   flex: 1;
 
-  font-size: 22px;
+  font-size: calc(1rem + 1.2vw);
   letter-spacing: 0.3px;
   line-height: 28px;
   color: white;
@@ -36,7 +36,7 @@
 .title-page .title {
   margin-bottom: 15px;
 
-  font-size: 58px;
+  font-size: calc(4rem + 1.5vw);
   font-weight: 700;
   line-height: 62px;
 }
