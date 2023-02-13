@@ -1,4 +1,4 @@
-.about-container {
+.family-tree-container {
   position: relative;
 }
 
@@ -55,7 +55,7 @@
 .family-tree-wrapper {
   color: #f4f0e5;
   font-size: 18px;
-  padding: 60px 0;
+  padding: 120px 0 60px 0;
   text-align: center;
 }
 
@@ -248,5 +248,15 @@
   opacity: 0.8;
 }
 
+.header-about {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-bottom: 20px;
+}
+
 @media screen and (max-width: 768px) {
+  .nav-list-about {
+    right: 132px;
+  }
 }

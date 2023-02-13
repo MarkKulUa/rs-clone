@@ -4,19 +4,30 @@ import "./about.css";
 import SimpleHeader from "../../components/simple-header/simple-header";
 
 class AboutProject extends Component {
-  // private aboutPageContainer;
+  private aboutPageContainer;
+
+  private familyTreeContainer;
 
   private simpleHeader: SimpleHeader;
+
+  private header;
+
+  private navList;
 
   constructor(parentNode: HTMLElement) {
     parentNode.innerHTML = "";
     super(parentNode, "div", ["about-page"]);
-    // this.aboutPageContainer =
-    // new Component(this.elem, "div", ["about-container", "container"], "");
-    // this.simpleHeader = new SimpleHeader(this.aboutPageContainer.elem);
-    // this.aboutPageContainer.appendHTML(template());
-    this.simpleHeader = new SimpleHeader(this.elem);
-    this.appendHTML(template());
+    this.aboutPageContainer = new Component(this.elem, "div", ["about-container"], "");
+
+    this.aboutPageContainer.appendHTML(template());
+    this.familyTreeContainer = document.querySelector(".family-tree-container") as HTMLElement;
+    this.simpleHeader = new SimpleHeader(this.familyTreeContainer);
+
+    this.header = document.querySelector(".simple-header") as HTMLElement;
+    this.header.classList.add("header-about");
+
+    this.navList = document.querySelector(".nav-list") as HTMLElement;
+    this.navList.classList.add("nav-list-about");
   }
 }
 
