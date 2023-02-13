@@ -7,7 +7,7 @@
   --footer-hover-color: #cc0000;
   --bg-color: #1c2a33;
   --font-color: #595959;
-  --hover-color: #f56932;
+  --hover-color: #ff7c55;
   /*#fc702d;*/
   --color-button-bg: #21262d;
   --color-bg-hover: #4c555d;
@@ -101,7 +101,7 @@ body {
   font-family: "Helvetica", cursive;
   font-size: 1.6rem;
 
-  background: var(--footer-color);
+  background: var(--header-bg-color);
   background-repeat: no-repeat;
   color: black;
 }

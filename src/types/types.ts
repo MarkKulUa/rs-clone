@@ -19,6 +19,7 @@ export interface AppRoute {
 }
 
 export const MAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+export const PASSWORD_REGEXP = /\S{6,}/i;
 
 export const SERVER_URL = "http://localhost:3000";
 
@@ -38,4 +39,9 @@ export enum Methods {
   PATCH = "PATCH",
   POST = "POST",
   PUT = "PUT",
+}
+
+export enum Sex {
+  Male = "Male",
+  Female = "Female",
 }
