@@ -7,6 +7,8 @@ function burgerAction() {
     nav.classList.toggle("show");
     burger.classList.toggle("open");
     overlay.classList.toggle("overlay-active");
+
+    burger.classList.toggle("burger-open-about");
   });
 
   overlay.addEventListener("click", () => {
@@ -14,6 +16,7 @@ function burgerAction() {
     burger.classList.remove("open");
     nav.classList.add("hide");
     overlay.classList.remove("overlay-active");
+    burger.classList.toggle("burger-open-about");
   });
 }
 export default burgerAction;
