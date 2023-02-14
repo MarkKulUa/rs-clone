@@ -1,4 +1,4 @@
-.about-container {
+.family-tree-container {
   position: relative;
 }
 
@@ -23,8 +23,8 @@
   background-image: url("../../assets/img/main&about/deep-nostalgia_bg.webp");
   background-position: 50%;
   background-size: contain;
+  background-repeat: no-repeat;
   height: 350px;
-  margin-right: -90px;
   width: 550px;
 }
 
@@ -33,17 +33,16 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  font-size: 18px;
+  font-size: calc(1rem + 0.8vw);
   letter-spacing: 0.3px;
   line-height: 28px;
-  margin-right: 95px;
   text-align: start;
   align-self: center;
 }
 
 .animate-wrapper .title {
   color: #000;
-  font-size: 48px;
+  font-size: calc(3rem + 1.5vw);
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 52px;
@@ -59,8 +58,8 @@
 
 .family-tree-wrapper {
   color: #f4f0e5;
-  font-size: 18px;
-  padding: 60px 0;
+  font-size: calc(1rem + 0.9vw);
+  padding: 250px 0 60px 0;
   text-align: center;
 }
 
@@ -70,7 +69,7 @@
 }
 .family-tree-wrapper .title {
   color: inherit;
-  font-size: 48px;
+  font-size: calc(3rem + 1.5vw);
   font-weight: 300;
   letter-spacing: 1px;
   line-height: 56px;
@@ -105,6 +104,7 @@
   height: 43px;
 
   opacity: 0;
+  transition: all 3s ease-out;
 }
 
 .mother-parents {
@@ -117,16 +117,20 @@
   height: 43px;
 
   opacity: 0;
+  transition: all 3s ease-out;
 }
 
 .mother-connector {
   right: 117px;
+  transition: all 3s ease-out;
 }
 
 .parents-connector {
   position: absolute;
   top: 22px;
   width: 20px;
+
+  transition: all 3s ease-out;
 }
 
 .parents-connector .horizontal-line {
@@ -134,6 +138,8 @@
   border-top: 1px solid #fff;
   width: 20px;
   height: 1px;
+
+  transition: all 3s ease-out;
 }
 
 .parents-connector .vertical-line {
@@ -142,17 +148,21 @@
   border-left: 1px solid #fff;
   width: 1px;
   height: 60px;
+
+  transition: all 3s ease-out;
 }
 
 .father-connector {
   left: 117px;
+
+  transition: all 1s ease-out;
 }
 
 .parent-mother-container {
   right: 0;
   opacity: 0;
   transform: scale(1) translateY(0);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 1s ease, opacity 3s ease;
 }
 
 .parent-container {
@@ -187,7 +197,7 @@
   left: 0;
   opacity: 0;
   transform: scale(1) translateY(0);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 1s ease, opacity 3s ease;
 }
 
 .father-container {
@@ -208,15 +218,21 @@
   left: 250px;
   width: 56px;
   z-index: -1;
+
+  transition: all 1s ease-out;
 }
 
 .mother-father-connector .horizontal-line {
   width: 56px;
+
+  transition: all 1s ease-out;
 }
 
 .mother-father-connector .vertical-line {
   left: 27px;
   height: 180px;
+
+  transition: all 1s ease-out;
 }
 
 .login-button {
@@ -253,5 +269,148 @@
   opacity: 0.8;
 }
 
+.header-about {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-bottom: 20px;
+}
+
+.records-section {
+  background-color: #f7f7f7;
+  min-height: 510px;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.records-section-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+}
+
+.records-text-container {
+  padding: 0 15px;
+}
+
+.records-text {
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.records-section .title {
+  color: #444441;
+  font-size: calc(3rem + 1.5vw);
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 56px;
+  margin-bottom: 27px;
+}
+
+.records-section .subtitle {
+  color: #444441;
+  font-size: calc(1rem + 0.8vw);
+  font-weight: 400;
+}
+
+.records-animation-wrapper {
+  position: relative;
+  margin: 28px 0 0;
+}
+
+.records-animation {
+  position: relative;
+  /* width: 1360px; */
+  height: 300px;
+  margin: auto 0 70px;
+  overflow-x: hidden;
+}
+
+.records-animation>div {
+  position: absolute;
+}
+
+.records-animation .animation-item {
+  display: inline-block;
+}
+
+.passport-record {
+  left: 220px;
+  top: 20px;
+  background-position: -449px -263px;
+  width: 168px;
+  height: 212px;
+  z-index: 4;
+}
+
+.census-record {
+  left: 350px;
+  background-position: -309px -4px;
+  width: 317px;
+  height: 255px;
+  z-index: 3;
+}
+
+.newspapers-record {
+  left: 1050px;
+  background-position: -2px -2px;
+  width: 302px;
+  height: 264px;
+  z-index: 6;
+}
+
+.man-record {
+  left: 610px;
+  top: 10px;
+  background-position: -309px -264px;
+  width: 136px;
+  height: 200px;
+  z-index: 7;
+}
+
+.woman-record {
+  left: 850px;
+  top: 22px;
+  background-position: -619px -281px;
+  width: 232px;
+  height: 180px;
+  z-index: 5;
+}
+
+.railway-record {
+  left: 0;
+  background-position: -4px -270px;
+  width: 268px;
+  height: 223px;
+  z-index: 1;
+}
+
+.letter-record {
+  left: 720px;
+  background-position: -630px -2px;
+  width: 225px;
+  height: 277px;
+  z-index: 2;
+}
+
 @media screen and (max-width: 768px) {
+  .nav-list-about {
+    right: 132px;
+  }
+
+  .animate-wrapper {
+    flex-direction: column;
+  }
+
+  .animate-wrapper .title-wrapper {
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 50px;
+  }
+
+  .tree-chart-animation {
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%)
+  }
 }
