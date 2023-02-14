@@ -23,15 +23,6 @@ class LoginFooter extends Component {
 
     this.registerLink.elem.addEventListener("click", goToRegisterPopup);
   }
-
-  /* goToRegisterPopup = () => {
-    const loginPopup = <Element>document.querySelector(".login-popup");
-    loginPopup.classList.remove("open");
-    document.body.classList.remove("scroll-lock");
-    const registerPopup = <Element>document.querySelector(".login-popup");
-    registerPopup.classList.add("open");
-    document.body.classList.add("scroll-lock");
-  }; */
 }
 
 export default LoginFooter;

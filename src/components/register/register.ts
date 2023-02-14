@@ -33,7 +33,7 @@ class Register extends Component {
       "",
     );
     this.registerCloseX = new Component(this.registerCloseContainer.elem, "div", ["close-x"], "");
-    const popupTitle = new PopupTitle(this.registerContainer.elem, "Sign in");
+    const popupTitle = new PopupTitle(this.registerContainer.elem, "Sign up");
     this.registerSocialButtons = new SocialButtons(this.registerContainer.elem, `${popupType}`);
     this.registerSocialDivider = new SocialDivider(this.registerContainer.elem);
     this.registerForm = new RegisterForm(this.registerContainer.elem);
@@ -62,11 +62,6 @@ class Register extends Component {
       }
     }); */
   }
-
-  /* openPurchaseModalWindow = () => {
-    this.cartPurchase.elem.classList.add("open");
-    document.body.classList.add("scroll-lock");
-  }; */
 
   closeRegisterPopup = () => {
     if (this.elem.classList.contains("open")) {

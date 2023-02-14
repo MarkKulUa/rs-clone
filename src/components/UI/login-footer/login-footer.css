@@ -14,14 +14,13 @@
   height: 2rem;
   padding-right: 20px;
 
-  font-size: 12px;
+  font-size: 14px;
   text-align: left;
 }
 
 .register-link {
   margin-left: 0.4rem;
 
-  font-size: 12px;
   text-decoration-line: underline;
 
   color: #f56932;

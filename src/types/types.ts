@@ -18,6 +18,17 @@ export interface AppRoute {
   drawComponent: () => void;
 }
 
+export interface ICreateUser {
+  email: string;
+  fullname: string;
+  password: string;
+}
+
+export interface ILoginUser {
+  login: string;
+  password: string;
+}
+
 export const MAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 export const PASSWORD_REGEXP = /\S{6,}/i;
 
@@ -41,7 +52,7 @@ export enum Methods {
   PUT = "PUT",
 }
 
-export enum Sex {
+export enum Gender {
   Male = "Male",
   Female = "Female",
 }

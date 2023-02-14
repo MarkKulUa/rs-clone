@@ -17,7 +17,7 @@ class App {
   private router;
 
   constructor(private rootElement: HTMLElement) {
-    this.register = new Register(this.rootElement, "Sign in");
+    this.register = new Register(this.rootElement, "Sign up");
     this.login = new Login(this.rootElement, "Log in");
     const isHeader = false;
     if (isHeader) {
