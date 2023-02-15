@@ -7,11 +7,11 @@
   --footer-hover-color: #cc0000;
   --bg-color: #1c2a33;
   --font-color: #595959;
-  --hover-color: #f56932;
-  /*#fc702d;*/
+  --hover-color: #ff7c55;
+  --alert-color: red;
   --color-button-bg: #21262d;
   --color-bg-hover: #4c555d;
-  --color-border: #4c555d;
+  --border-color: #4c555d;
   --filter-blue: invert(81%) sepia(73%) saturate(3631%) hue-rotate(202deg) brightness(90%)
     contrast(101%);
   --filter-orange: invert(49%) sepia(25%) saturate(4894%) hue-rotate(342deg) brightness(101%)
@@ -101,7 +101,7 @@ body {
   font-family: "Helvetica", cursive;
   font-size: 1.6rem;
 
-  background: var(--footer-color);
+  background: var(--header-bg-color);
   background-repeat: no-repeat;
   color: black;
 }
