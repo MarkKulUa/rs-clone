@@ -73,7 +73,6 @@ class Login extends Component {
     if (this.elem.classList.contains("open")) {
       this.elem.classList.remove("open");
       document.body.classList.remove("scroll-lock");
-      console.log(this.elem);
     }
   };
 }

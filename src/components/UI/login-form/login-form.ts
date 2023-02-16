@@ -1,4 +1,5 @@
-import { Methods } from "../../../types/types";
+import { loginUser } from "../../../api/api";
+import { ILoginUser, MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
 import "./login-form.css";
@@ -63,6 +64,25 @@ class LoginForm extends Component {
       "Forgot your password?",
     );
     this.forgotPasswordLink.elem.setAttribute("href", "#");
+  }
+
+  private async loginUser(user: ILoginUser): Promise<void> {
+    const userData = await loginUser(user);
+  }
+
+  private async validateLoginData() {
+    const isEmail = MAIL_REGEXP.test(this.eMailInput.elem.value) && this.eMailInput.elem.value.trim() !== "";
+    const isPasssword = PASSWORD_REGEXP.test(this.passwordInput.elem.value)
+      && this.passwordInput.elem.value.trim() !== "";
+    if (isEmail && isPasssword) {
+      this.loginMessage.elem.textContent = "";
+      const login = <string> this.eMailInput.elem.value;
+      const password = <string> this.passwordInput.elem.value;
+      const user: ILoginUser = { login, password };
+      await this.loginUser(user);
+    } else {
+      this.loginMessage.elem.textContent = "Incorrect login data ";
+    }
   }
 
   togglePassShow() {

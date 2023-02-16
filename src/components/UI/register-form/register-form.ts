@@ -1,4 +1,5 @@
-import { MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
+import { createUser } from "../../../api/api";
+import { ICreateUser, MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
 import GenderForm from "../radio-forms/gender-form";
@@ -150,18 +151,27 @@ class RegisterForm extends Component {
 
     this.registerButton = new Component(this.elem, "button", ["btn", "register-button"], "Sign up");
 
-    this.registerButton.elem.addEventListener("click", () => this.validateData());
+    this.registerButton.elem.addEventListener("click", () => this.validateRegisterData());
   }
 
-  private validateData() {
+  private async createUser(user: ICreateUser): Promise<void> {
+    await createUser(user);
+  }
+
+  private async validateRegisterData() {
     const isEmail = MAIL_REGEXP.test(this.registerEMailInput.elem.value)
       && this.registerEMailInput.elem.value.trim() !== "";
     const isPasssword = PASSWORD_REGEXP.test(this.registerPasswordInput.elem.value)
       && this.registerPasswordInput.elem.value.trim() !== "";
     if (isEmail && isPasssword) {
       this.registerMessage.elem.textContent = "";
+      const email = <string> this.registerEMailInput.elem.value;
+      const fullname = `${this.registerFirstName.elem.value} ${this.registerLastName.elem.value}`;
+      const password = <string> this.registerPasswordInput.elem.value;
+      const user: ICreateUser = { email, fullname, password };
+      await this.createUser(user);
     } else {
-      this.registerMessage.elem.textContent = "Incorrect input data ";
+      this.registerMessage.elem.textContent = "Incorrect user data ";
     }
   }
 
