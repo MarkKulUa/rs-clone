@@ -54,6 +54,23 @@
   color: var(--hover-color);
 }
 
+.login {
+  margin-right: 2rem;
+
+  font-size: 1.8rem;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+.login:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+
+  color: var(--hover-color);
+}
+
 .lang-container {
   display: flex;
   justify-content: center;
@@ -234,7 +251,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 440px) {
   .logo {
     width: 40px;
     height: 40px;

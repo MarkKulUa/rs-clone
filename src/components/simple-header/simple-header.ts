@@ -1,6 +1,7 @@
 import Component from "../../utils/component";
 import template from "./template";
 import "./simple-header.css";
+import { openLoginPopup } from "../../utils/popup";
 
 class SimpleHeader extends Component {
   public navLinks;
@@ -11,19 +12,29 @@ class SimpleHeader extends Component {
 
     this.navLinks = document.querySelectorAll(".nav-link");
 
-    window.addEventListener("load", () => this.setActiveItem());
-    window.addEventListener("click", () => this.setActiveItem());
-    window.addEventListener("hashchange", () => this.setActiveItem());
+    window.addEventListener("load", this.setActiveItem);
+    window.addEventListener("click", this.setActiveLink);
+    window.addEventListener("hashchange", this.setActiveItem);
   }
 
-  private setActiveItem(): void {
+  private setActiveItem = () => {
     this.navLinks.forEach((item) => {
       item.classList.remove("active");
       if (item.getAttribute("href") === window.location.hash) {
         item.classList.add("active");
       }
     });
-  }
+  };
+
+  private setActiveLink = (e: MouseEvent) => {
+    this.navLinks.forEach((item) => {
+      item.classList.remove("active");
+      if (item.getAttribute("href") === window.location.hash) {
+        item.classList.add("active");
+      }
+    });
+    openLoginPopup(e);
+  };
 }
 
 export default SimpleHeader;

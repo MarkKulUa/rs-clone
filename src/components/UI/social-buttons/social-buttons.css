@@ -1,0 +1,66 @@
+.social-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-button {
+  position: relative;
+  padding: 4px;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  height: 48px;
+}
+
+.social-button:hover {
+  color: var(--hover-color);
+}
+
+.social-button::before {
+  position: absolute;
+  display: block;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  margin: auto;
+}
+
+.facebook-button {
+  background-color: #4266b2;
+  color: white;
+}
+
+.facebook-button::before {
+  background-image: url("../../../assets/svg/fb.svg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.google-button {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.google-button::before {
+  background-image: url("../../../assets/svg/google.svg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  width: 25px;
+  height: 25px;
+}

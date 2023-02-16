@@ -7,9 +7,6 @@ function template() {
         <a class="nav-link" href="#/about" id="about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#/login" id="login">Log in</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="#/team" id="team">About us</a>
       </li>
     </ul>
@@ -19,6 +16,7 @@ function template() {
     <div class="line2"></div>
     <div class="line3"></div> 
   </div>
+  <div class="login" id="login">Log in</div>
   <div class="lang-container">
   <div class="lang-ico"></div>
     <ul class="lang-list">
