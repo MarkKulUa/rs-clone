@@ -40,6 +40,8 @@ function handleElementScroll(): void {
     el.style.transform = `scale(${getScale(el)})`;
   });
   loginButton.style.opacity = `${getOpacity(loginButton)}`;
+
+  // Animation Records
 }
 
 window.onscroll = handleElementScroll;
