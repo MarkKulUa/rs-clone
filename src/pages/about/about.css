@@ -451,6 +451,163 @@
   margin: 0 auto;
 }
 
+.discovery-section .discovery-animation .box-bg {
+  position: absolute;
+  left: 72px;
+  top: 100px;
+  background-position: 0 -907px;
+  width: 245px;
+  height: 87px;
+  z-index: 0;
+}
+
+.discovery-section .discovery-animation .box-open-back {
+  position: absolute;
+  left: 190px;
+  top: 56px;
+  background-position: -243px -906px;
+  width: 155px;
+  height: 86px;
+  z-index: 1;
+}
+
+.discovery-section .discovery-animation .box-open-front {
+  position: absolute;
+  left: 44px;
+  top: 80px;
+  background-position: -398px -926px;
+  width: 152px;
+  height: 106px;
+  z-index: 11;
+}
+
+.discovery-section .discovery-animation .box-photo-family {
+  position: absolute;
+  left: 210px;
+  top: 43px;
+  background-position: -633px -759px;
+  width: 127px;
+  height: 97px;
+  z-index: 7;
+  transform: rotate(-21deg);
+}
+
+.discovery-section .discovery-animation .box-photo-id {
+  position: absolute;
+  left: 202px;
+  top: -25px;
+  background-position: -760px -760px;
+  width: 75px;
+  height: 107px;
+  z-index: 6;
+  transform: rotate(29deg);
+}
+
+.discovery-section .discovery-animation .box-photo-table {
+  position: absolute;
+  left: 210px;
+  top: -68px;
+  background-position: -686px -866px;
+  width: 139px;
+  height: 113px;
+  z-index: 5;
+  transform: rotate(-32deg);
+}
+
+.discovery-section .discovery-animation .box-photo-portrait {
+  position: absolute;
+  left: 37px;
+  top: -66px;
+  background-position: -428px -843px;
+  width: 97px;
+  height: 82px;
+  z-index: 9;
+  transform: rotate(0);
+}
+
+.discovery-section .discovery-animation .box-photo-people {
+  position: absolute;
+  left: -7px;
+  top: -9px;
+  background-position: -428px -759px;
+  width: 113px;
+  height: 84px;
+  z-index: 8;
+  transform: rotate(-16deg);
+}
+
+.discovery-section .discovery-animation .box-photo-cert {
+  position: absolute;
+  left: 68px;
+  top: -126px;
+  background-position: -542px -759px;
+  width: 92px;
+  height: 107px;
+  z-index: 7;
+  transform: rotate(2deg);
+}
+
+.box-photo-blue {
+  position: absolute;
+  left: 145px;
+  top: -149px;
+  background-position: -550px -866px;
+  width: 136px;
+  height: 116px;
+  z-index: 6;
+  transform: rotate(0);
+}
+
+.box-star {
+  position: absolute;
+  background-position: -740px -707px;
+  width: 28px;
+  height: 29px;
+  z-index: 2;
+}
+
+.box-star1 {
+  left: 6px;
+  top: 145px;
+  z-index: 6;
+  transform: rotate(0) scale(.5);
+}
+
+.box-star2 {
+  left: 6px;
+  top: -23px;
+  z-index: 8;
+  transform: rotate(29deg) scale(1);
+}
+
+.box-star3 {
+  left: 167px;
+  top: 40px;
+  z-index: 8;
+  transform: rotate(18deg) scale(1);
+}
+
+.box-star4 {
+  left: 314px;
+  top: -106px;
+  z-index: 8;
+  transform: rotate(26deg) scale(.6);
+}
+
+.box-star5 {
+  left: 345px;
+  top: 10px;
+  z-index: 8;
+  transform: rotate(2deg) scale(.6);
+}
+
+.box-star6 {
+  left: 357px;
+  top: 58px;
+  z-index: 8;
+  transform: rotate(7deg) scale(.8);
+}
+
 @media screen and (max-width: 768px) {
   .nav-list-about {
     right: 132px;

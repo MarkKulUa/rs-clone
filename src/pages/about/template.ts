@@ -86,7 +86,7 @@ function template() {
             <div class="box-open-front animation-item"></div>
             <div class="box-photo-family animation-item"></div>
             <div class="box-photo-id animation-item"></div>
-            <div class="box-photo-table animation-item></div>
+            <div class="box-photo-table animation-item"></div>
             <div class="box-photo-portrait animation-item"></div>
             <div class="box-photo-people animation-item"></div>
             <div class="box-photo-cert animation-item"></div>
