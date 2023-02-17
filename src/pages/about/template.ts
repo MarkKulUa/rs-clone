@@ -72,6 +72,35 @@ function template() {
         </div>
       </div>
     </section>
+    <section class="discovery-section">
+      <div class="discovery-container container">
+        <div class="discovery-text">
+          <h2 class="title">Easy automatic discoveries</h2>
+          <p class="subtitle">The minute you create a family tree, we'll begin searching for you. Look forward to email alerts with Smart Matches and Record Matches revealing new family tree connections, records and newspaper articles about your ancestors.</p>
+        </div>
+        <div class="discovery-animation-wrapper">
+          <div class="discovery-animation">
+            <div class="box-front animation-item"></div>
+            <div class="box-bg animation-item"></div>
+            <div class="box-open-back animation-item"></div>
+            <div class="box-open-front animation-item"></div>
+            <div class="box-photo-family animation-item"></div>
+            <div class="box-photo-id animation-item"></div>
+            <div class="box-photo-table animation-item></div>
+            <div class="box-photo-portrait animation-item"></div>
+            <div class="box-photo-people animation-item"></div>
+            <div class="box-photo-cert animation-item"></div>
+            <div class="box-photo-blue animation-item"></div>
+            <div class="box-star1 box-star animation-item"></div>
+            <div class="box-star2 box-star animation-item"></div>
+            <div class="box-star3 box-star animation-item"></div>
+            <div class="box-star4 box-star animation-item"></div>
+            <div class="box-star5 box-star animation-item"></div>
+            <div class="box-star6 box-star animation-item"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   `;
 }
 

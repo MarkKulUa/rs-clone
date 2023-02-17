@@ -332,6 +332,7 @@
 
 .records-animation .animation-item {
   display: inline-block;
+  transition: left 1s;
 }
 
 .passport-record {
@@ -393,6 +394,63 @@
   z-index: 2;
 }
 
+.discovery-section {
+  background-image: url("../../assets/img/main&about/discovery-bg.webp");
+  background-color: #555551;
+  background-position: 50% 0;
+  background-repeat: repeat;
+  color: #f4f0e5;
+  display: flex;
+  height: 520px;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.discovery-container {
+  display: flex;
+}
+
+.discovery-text {
+  padding: 95px 0;
+  text-align: center;
+}
+
+.discovery-text .title {
+  color: inherit;
+  font-size: calc(3rem + 1.5vw);
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 56px;
+  margin: 0 0 27px;
+}
+
+.discovery-text .subtitle {
+  font-size: calc(1rem + 0.8vw);
+  font-weight: 400;
+  padding: 0 0 12px;
+}
+
+.discovery-section .discovery-animation {
+  position: relative;
+  height: 347px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.discovery-section .discovery-animation .box-front {
+  position: absolute;
+  left: 65px;
+  top: 140px;
+  background-position: -522px -496px;
+  width: 282px;
+  height: 213px;
+  z-index: 10;
+}
+
+.discovery-section .discovery-animation>div {
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 768px) {
   .nav-list-about {
     right: 132px;
@@ -413,4 +471,21 @@
     left: 50%;
     transform: translateX(-50%)
   }
+
+  .discovery-section {
+    height: auto;
+}
+
+  .discovery-container {
+    display: inline-block;
+  }
+
+  .discovery-text {
+    padding: 0;
+  }
+  
+  .discovery-section .discovery-animation {
+    margin: 180px auto 0;
+    width: 400px;
+}
 }
