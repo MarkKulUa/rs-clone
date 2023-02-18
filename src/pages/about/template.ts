@@ -216,12 +216,12 @@ function template() {
                 </div>
               </div>
               <div class="dots_container">
-                  <div class="dot dot_0 default_color"></div>
-                  <div class="dot dot_1 active default_color"></div>
-                  <div class="dot dot_2 default_color"></div>
-                  <div class="dot dot_3 default_color"></div>
-                  <div class="dot dot_4 default_color"></div>
-                </div>
+                <div class="dot dot_0 active default_color"></div>
+                <div class="dot dot_1 default_color"></div>
+                <div class="dot dot_2 default_color"></div>
+                <div class="dot dot_3 default_color"></div>
+                <div class="dot dot_4 default_color"></div>
+              </div>
             </div>
           </div>
         </div>

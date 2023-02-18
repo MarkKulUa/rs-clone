@@ -5,6 +5,7 @@ import AboutProject from "../pages/about/about";
 import burgerAction from "../components/simple-header/burger-action";
 import handleElementScroll from "../pages/about/animation";
 import animationRecords from "../pages/about/animation-records";
+import carousel from "../pages/about/quotes-carousel";
 
 class Router {
   // model: Model;
@@ -105,6 +106,7 @@ class Router {
     burgerAction();
     window.onscroll = handleElementScroll;
     animationRecords();
+    carousel();
   }
 
   initRouter(): void {
