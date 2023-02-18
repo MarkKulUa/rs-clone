@@ -1,10 +1,13 @@
 export const openLoginPopup = (e: MouseEvent) => {
-  const loginLink = <Element>document.querySelector(".login");
+  // const loginLink = <Element>document.querySelector(".login");
+  const loginLink = document.querySelectorAll(".login") as NodeListOf<HTMLElement & { style: CSSStyleDeclaration }>;
   const loginPopup = <Element>document.querySelector(".login-popup");
-  if (e.target === loginLink) {
-    loginPopup.classList.add("open");
-    document.body.classList.add("scroll-lock");
-  }
+  loginLink.forEach((el) => {
+    if (e.target === el) {
+      loginPopup.classList.add("open");
+      document.body.classList.add("scroll-lock");
+    }
+  });
 };
 
 export const goToRegisterPopup = () => {
