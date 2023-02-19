@@ -2,11 +2,12 @@ import Component from "../../utils/component";
 import template from "./template";
 import "./simple-header.css";
 import { openLoginPopup } from "../../utils/popup";
+import Model from "../../model/model";
 
 class SimpleHeader extends Component {
   public navLinks;
 
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: HTMLElement, model: Model) {
     super(parentNode, "div", ["container", "simple-header"]);
     this.appendHTML(template());
 

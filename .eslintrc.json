@@ -36,6 +36,7 @@
         "tsx": "never"
       }
     ],
+    "import/no-cycle": 0,
     "linebreak-style": ["error", "windows"],
     "no-param-reassign": [2, { "props": false }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],

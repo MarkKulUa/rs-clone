@@ -1,7 +1,16 @@
-import { createUser } from "../../../api/api";
-import { ICreateUser, MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
+import { createUser, loginUser } from "../../../api/api";
+import Model from "../../../model/model";
+import {
+  ICreateUser,
+  ILoginUser,
+  IUserData,
+  MAIL_REGEXP,
+  Methods,
+  PASSWORD_REGEXP,
+} from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
+import LoginForm from "../login-form/login-form";
 import GenderForm from "../radio-forms/gender-form";
 import "./register-form.css";
 
@@ -34,7 +43,6 @@ class RegisterForm extends Component {
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "form", ["register-form"], "");
-    this.elem.setAttribute("method", Methods.POST);
 
     const registerTitle = new Component(this.elem, "div", ["register-title"], "Sign up with Email");
     this.genderForm = new GenderForm(this.elem);
@@ -158,18 +166,40 @@ class RegisterForm extends Component {
     await createUser(user);
   }
 
+  public async loginUser(user: ILoginUser): Promise<IUserData | null> {
+    const userData = await loginUser(user);
+    return userData;
+  }
+
   private async validateRegisterData() {
     const isEmail = MAIL_REGEXP.test(this.registerEMailInput.elem.value)
       && this.registerEMailInput.elem.value.trim() !== "";
     const isPasssword = PASSWORD_REGEXP.test(this.registerPasswordInput.elem.value)
       && this.registerPasswordInput.elem.value.trim() !== "";
+    console.log(isEmail && isPasssword);
     if (isEmail && isPasssword) {
       this.registerMessage.elem.textContent = "";
       const email = <string> this.registerEMailInput.elem.value;
       const fullname = `${this.registerFirstName.elem.value} ${this.registerLastName.elem.value}`;
       const password = <string> this.registerPasswordInput.elem.value;
-      const user: ICreateUser = { email, fullname, password };
-      await this.createUser(user);
+      const newUser: ICreateUser = { email, fullname, password };
+      await this.createUser(newUser);
+      const login = email;
+      const user: ILoginUser = { login, password };
+      const data = await this.loginUser(user);
+      // if (data) {
+      const model = new Model();
+      const state = model.getState();
+      console.log(JSON.stringify(state));
+      model.setState({
+        ...state,
+        userId: <string>data?.userId,
+        userName: <string>data?.fullName,
+        token: <string>data?.token,
+      });
+      console.log(JSON.stringify(state));
+      window.location.hash = "#/site";
+      // }
     } else {
       this.registerMessage.elem.textContent = "Incorrect user data ";
     }

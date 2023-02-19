@@ -54,6 +54,10 @@
   color: var(--hover-color);
 }
 
+.nav-link .active {
+  color: #f56932;
+}
+
 .login {
   margin-right: 2rem;
 
@@ -157,8 +161,6 @@
   margin-top: 5px;
   transition: all 0.3s ease;
 }
-
-
 
 .burger.open .line1 {
   transform: rotate(45deg) translate(5px, 5px);

@@ -4,72 +4,74 @@ import TitlePage from "../pages/title/title";
 import AboutProject from "../pages/about/about";
 import burgerAction from "../components/simple-header/burger-action";
 import handleElementScroll from "../pages/about/animation";
+import Model from "../model/model";
+import Header from "../components/header/header";
+import TeamPage from "../pages/team/team";
 
 class Router {
-  // model: Model;
+  model: Model;
 
   private routes: Array<AppRoute>;
 
   private defaultRoute: AppRoute;
 
+  header?: Component;
+
   titlePage?: Component;
 
   aboutPage?: Component;
 
-  // teamPage?: Component;
+  teamPage?: Component;
 
   // errorPage: Component | undefined;
 
   currentRoute: string;
 
   constructor(private rootElement: HTMLElement) {
-    // this.model = new Model();
+    this.model = new Model();
     this.routes = [
       {
         name: "/",
-        drawComponent: () => {
-          this.titlePage = new TitlePage(this.rootElement);
+        drawComponent: (model) => {
+          this.titlePage = new TitlePage(this.rootElement, model);
         },
       },
       {
         name: "/about",
-        drawComponent: () => {
-          this.aboutPage = new AboutProject(this.rootElement);
+        drawComponent: (model) => {
+          this.aboutPage = new AboutProject(this.rootElement, model);
         },
       },
-      /* {
-        name: "/login",
-        drawComponent: () => {
-          this.projectPage = new LoginPage(this.rootElement);
-        },
-      }, */
-      /* {
+      {
         name: "/team",
-        drawComponent: () => {
-          this.commandPage = new TeamPage(this.rootElement);
+        drawComponent: (model) => {
+          // this.teamPage = new TeamPage(this.rootElement);
+          this.titlePage = new TitlePage(this.rootElement, model);
         },
-      }, */
+      },
+      {
+        name: "/site",
+        drawComponent: (model) => {
+          this.rootElement.innerHTML = "";
+          this.header = new Header(this.rootElement);
+        },
+      },
     ];
 
     this.currentRoute = "/";
 
     this.defaultRoute = {
       name: "",
-      drawComponent: () => {
-        this.titlePage = new TitlePage(this.rootElement);
-        // this.simpleHeader = new SimpleHeader(this.rootElement);
-        // this.aboutPage = new AboutProject(this.rootElement);
+      drawComponent: (model) => {
+        this.titlePage = new TitlePage(this.rootElement, model);
       },
     };
   }
 
   updateRouter(): void {
     const currRouteFromHash = window.location.hash.slice(1);
-    const currRoute = this.routes.find((page) => page.name === currRouteFromHash);
+    console.log(currRouteFromHash);
 
-    (currRoute || this.defaultRoute).drawComponent();
-
-    // /* const currRouteFromHash = window.location.hash.slice(1);
     // const [pagePathName, id = null] = currRouteFromHash.split("/").filter((item) => !!item);
 
     const currRouteArray = currRouteFromHash.split("?");
@@ -79,18 +81,32 @@ class Router {
       currRouteParam = String(currRouteArray[1]);
     }
 
+    console.log(currRouteParam);
+
+    const currRoute = this.routes.find((page) => page.name === currRouteFromHash);
+    console.log(currRoute);
+
     // const currRoute = this.routes.find(
     //   (page) => page.name === currRouteName || page.name === `/${pagePathName}/`,
     // ); */
 
+    // window.location.search = "";
+
     if (!currRoute) {
       this.currentRoute = currRouteName;
-      // this.defaultRoute.drawComponent(currRouteParam, this.model);
+      this.defaultRoute.drawComponent(this.model);
     } else {
-      if (!currRouteParam) {
+      if (currRouteParam === "") {
         window.location.hash = currRouteFromHash;
+        console.log(window.location.href);
+        console.log(window.location.host);
+        console.log(window.location.hostname);
+        console.log(window.location.pathname);
+        console.log(window.location.search);
+        console.log(window.location.hash);
       } else {
         window.location.hash = `${currRoute.name}?${currRouteParam}`;
+        console.log(`${currRoute.name}?${currRouteParam}`);
       }
       //  ? (window.location.hash = currRouteFromHash)
       //  : (window.location.hash = `${currRoute.name}?${currRouteParam}`);
@@ -99,14 +115,15 @@ class Router {
       //   } else {
       //     currRoute.component(currRouteParam, this.model);
       //   }
-      this.currentRoute = currRoute.name;
+      currRoute.drawComponent(this.model);
+      this.currentRoute = (currRoute || this.defaultRoute).name;
     }
     burgerAction();
     window.onscroll = handleElementScroll;
   }
 
-  initRouter(): void {
-    // this.model = model;
+  initRouter(model: Model): void {
+    this.model = model;
 
     if (window.location.hash === "") {
       window.location.hash = "#/";

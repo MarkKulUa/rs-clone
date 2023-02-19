@@ -1,11 +1,20 @@
+import Model from "../model/model";
+
 // Стейт как пропсы всего приложения
 export interface IState {
+  lang: string;
+  userId: string;
+  userName: string;
+  token: string;
+  searchQuery: string;
   perPage?: number;
   sortBy?: string;
   page?: number;
   section?: string;
   handleSection?: (target: HTMLButtonElement) => void;
 }
+
+export type TSubscriber = (state: IState) => void;
 
 export interface IMain {
   render?: () => void;
@@ -14,8 +23,7 @@ export interface IMain {
 
 export interface AppRoute {
   name: string;
-  // component: (params: string, model: Model, options?: { id: number }) => void;
-  drawComponent: () => void;
+  drawComponent: (model: Model) => void;
 }
 
 export interface ICreateUser {
@@ -34,7 +42,7 @@ export interface IUserData {
   fullName: string;
   token: string;
   refreshToken: string;
-  userId: "63e75c473192dabecf01a8c2";
+  userId: string; // "63e75c473192dabecf01a8c2";
   notifications: [];
 }
 
@@ -51,8 +59,8 @@ export interface Person {
   firstName: string;
   lastName: string;
   maidenName?: string;
-  motherID: string;
-  fatherID: string;
+  motherId: string;
+  fatherId: string;
   avatarLink: string;
   country: string;
   city: string;

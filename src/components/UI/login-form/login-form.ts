@@ -1,5 +1,6 @@
 import { loginUser } from "../../../api/api";
-import { ILoginUser, MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
+import Model from "../../../model/model";
+import { ILoginUser, IUserData, MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
 import "./login-form.css";
@@ -20,7 +21,6 @@ class LoginForm extends Component {
   constructor(parentNode: HTMLElement) {
     super(parentNode, "form", ["login-form"], "");
 
-    this.elem.setAttribute("method", Methods.POST);
     const eMailContainer = new Component(this.elem, "div", ["form-item", "item"]);
     this.eMailInput = new InputComponent(
       eMailContainer.elem,
@@ -66,8 +66,9 @@ class LoginForm extends Component {
     this.forgotPasswordLink.elem.setAttribute("href", "#");
   }
 
-  private async loginUser(user: ILoginUser): Promise<void> {
+  public async loginUser(user: ILoginUser): Promise<IUserData | null> {
     const userData = await loginUser(user);
+    return userData;
   }
 
   private async validateLoginData() {
@@ -79,7 +80,20 @@ class LoginForm extends Component {
       const login = <string> this.eMailInput.elem.value;
       const password = <string> this.passwordInput.elem.value;
       const user: ILoginUser = { login, password };
-      await this.loginUser(user);
+      const data = await this.loginUser(user);
+      /* if (data) { */
+      const model = new Model();
+      const state = model.getState();
+      console.log(JSON.stringify(state));
+      model.setState({
+        ...state,
+        userId: <string>data?.userId,
+        userName: <string>data?.fullName,
+        token: <string>data?.token,
+      });
+      console.log(JSON.stringify(state));
+      window.location.hash = "#/site";
+      // }
     } else {
       this.loginMessage.elem.textContent = "Incorrect login data ";
     }

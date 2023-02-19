@@ -1,53 +1,41 @@
 import Component from "../../utils/component";
 import template from "./template";
 import "./header.css";
+import logoutAccount from "../../utils/logout";
 // import { IState } from "../../types/types";
 
-/* class Header {
-  protected props: IState;
-
-  constructor(props: IState) {
-    this.props = props;
-  }
-
-  render() {
-    const header = document.createElement("header");
-    header.classList.add("header");
-    // header.classList.add("simple_header");
-    header.innerHTML = template();
-
-    const burger = header.querySelector(".burger") as HTMLElement;
-    const nav = header.querySelector(".nav-list") as HTMLElement;
-    const overlay = header.querySelector(".overlay") as HTMLElement;
-
-    burger.addEventListener("click", () => {
-      nav.classList.toggle("show");
-      burger.classList.toggle("open");
-      overlay.classList.toggle("overlay-active");
-    });
-
-    overlay.addEventListener("click", () => {
-      nav.classList.remove("show");
-      burger.classList.remove("open");
-      nav.classList.add("hide");
-      overlay.classList.remove("overlay-active");
-    });
-
-    return header;
-  }
-} */
-
 class Header extends Component {
+  public navLinks;
+
   constructor(parentNode: HTMLElement) {
-    super(parentNode, "header", ["header"]);
+    super(parentNode, "div", ["container", "header"]);
     this.appendHTML(template());
+
+    this.navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("load", this.setActiveItem);
+    window.addEventListener("click", this.setActiveLink);
+    window.addEventListener("hashchange", this.setActiveItem);
   }
 
-  /* render() {
-    this.elem.innerHTML = template();
+  private setActiveItem = () => {
+    this.navLinks.forEach((item) => {
+      item.classList.remove("active");
+      if (item.getAttribute("href") === window.location.hash) {
+        item.classList.add("active");
+      }
+    });
+  };
 
-    return this.elem;
-  } */
+  private setActiveLink = (e: MouseEvent) => {
+    this.navLinks.forEach((item) => {
+      item.classList.remove("active");
+      if (item.getAttribute("href") === window.location.hash) {
+        item.classList.add("active");
+      }
+    });
+    logoutAccount(e);
+  };
 }
 
 export default Header;
