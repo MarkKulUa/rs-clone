@@ -5,6 +5,7 @@ function handleElementScroll(): void {
   const mother = document.querySelector(".parent-mother-container") as HTMLElement;
   const parentsConnector = document.querySelectorAll(".parents-connector") as NodeListOf<HTMLElement & { style: CSSStyleDeclaration }>;
   const loginButton = document.querySelector(".login-button") as HTMLElement;
+  const deviceImageItem = document.querySelectorAll(".device_image_item") as NodeListOf<HTMLElement & { style: CSSStyleDeclaration }>;
 
   function getOpacity(a: HTMLElement) {
     const rect = a.getBoundingClientRect();
@@ -41,6 +42,10 @@ function handleElementScroll(): void {
   });
   loginButton.style.opacity = `${getOpacity(loginButton)}`;
 
+  deviceImageItem.forEach((el) => {
+    el.style.opacity = `${getOpacity(el)}`;
+    el.style.transform = `scale(${getScale(el)})`;
+  });
   // Animation Records
 }
 

@@ -4,6 +4,8 @@ import TitlePage from "../pages/title/title";
 import AboutProject from "../pages/about/about";
 import burgerAction from "../components/simple-header/burger-action";
 import handleElementScroll from "../pages/about/animation";
+import animationRecords from "../pages/about/animation-records";
+import carousel from "../pages/about/quotes-carousel";
 import Model from "../model/model";
 import Header from "../components/header/header";
 import TeamPage from "../pages/team/team";
@@ -88,7 +90,7 @@ class Router {
 
     // const currRoute = this.routes.find(
     //   (page) => page.name === currRouteName || page.name === `/${pagePathName}/`,
-    // ); */
+    // );
 
     // window.location.search = "";
 
@@ -120,6 +122,8 @@ class Router {
     }
     burgerAction();
     window.onscroll = handleElementScroll;
+    animationRecords();
+    carousel();
   }
 
   initRouter(model: Model): void {
