@@ -3,10 +3,13 @@ import Model from "../../../model/model";
 import {
   ICreateUser,
   ILoginUser,
+  IMessage,
   IUserData,
   MAIL_REGEXP,
   Methods,
   PASSWORD_REGEXP,
+  SERVER_URL,
+  StatusCodes,
 } from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
@@ -43,6 +46,7 @@ class RegisterForm extends Component {
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "form", ["register-form"], "");
+    this.elem.setAttribute("action", `${SERVER_URL}/api/auth/register`);
 
     const registerTitle = new Component(this.elem, "div", ["register-title"], "Sign up with Email");
     this.genderForm = new GenderForm(this.elem);
@@ -158,48 +162,66 @@ class RegisterForm extends Component {
     this.registerMessage = new Component(messageContainer.elem, "div", ["register-message"], "");
 
     this.registerButton = new Component(this.elem, "button", ["btn", "register-button"], "Sign up");
+    this.registerButton.elem.setAttribute("type", "submit");
 
-    this.registerButton.elem.addEventListener("click", () => this.validateRegisterData());
+    // this.registerButton.elem.addEventListener("click", () => this.validateRegisterData(), true);
+    this.elem.addEventListener("submit", (e) => this.validateRegisterData(e));
+    /* this.elem.addEventListener("submit", (e) => {
+      e.preventDefault();
+    }); */
   }
 
-  private async createUser(user: ICreateUser): Promise<void> {
-    await createUser(user);
+  private async createUser(user: ICreateUser): Promise<Response> {
+    const res = await createUser(user);
+    const data = await res.json();
+    console.log(data);
+    this.registerMessage.elem.textContent = data.message || "";
+    return res;
   }
 
-  public async loginUser(user: ILoginUser): Promise<IUserData | null> {
-    const userData = await loginUser(user);
-    return userData;
+  private async loginUser(user: ILoginUser): Promise<Response> {
+    const res = await loginUser(user);
+    const data = await res.json();
+    this.registerMessage.elem.textContent = data.message || "";
+    console.log(data);
+    return res;
   }
 
-  private async validateRegisterData() {
+  private async validateRegisterData(e: SubmitEvent) {
+    e.preventDefault();
     const isEmail = MAIL_REGEXP.test(this.registerEMailInput.elem.value)
       && this.registerEMailInput.elem.value.trim() !== "";
     const isPasssword = PASSWORD_REGEXP.test(this.registerPasswordInput.elem.value)
       && this.registerPasswordInput.elem.value.trim() !== "";
-    console.log(isEmail && isPasssword);
     if (isEmail && isPasssword) {
       this.registerMessage.elem.textContent = "";
       const email = <string> this.registerEMailInput.elem.value;
-      const fullname = `${this.registerFirstName.elem.value} ${this.registerLastName.elem.value}`;
+      const fullName = `${this.registerFirstName.elem.value} ${this.registerLastName.elem.value}`;
       const password = <string> this.registerPasswordInput.elem.value;
-      const newUser: ICreateUser = { email, fullname, password };
-      await this.createUser(newUser);
+      const newUser: ICreateUser = { email, fullName, password };
+      console.log(JSON.stringify(newUser));
+      const res = await this.createUser(newUser);
+      console.log(res.status);
       const login = email;
       const user: ILoginUser = { login, password };
-      const data = await this.loginUser(user);
-      // if (data) {
-      const model = new Model();
-      const state = model.getState();
-      console.log(JSON.stringify(state));
-      model.setState({
-        ...state,
-        userId: <string>data?.userId,
-        userName: <string>data?.fullName,
-        token: <string>data?.token,
-      });
-      console.log(JSON.stringify(state));
-      window.location.hash = "#/site";
-      // }
+      console.log(JSON.stringify(user));
+      const loginRes = await this.loginUser(user);
+      console.log(loginRes);
+      if (loginRes.status === StatusCodes.Ok) {
+        const data = await loginRes.json();
+        const model = new Model();
+        const state = model.getState();
+        console.log(JSON.stringify(state));
+        model.setState({
+          ...state,
+          userId: <string>data.userId,
+          userName: <string>data.fullName,
+          token: <string>data.token,
+        });
+        console.log(JSON.stringify(state));
+        // window.location.href = "http://localhost:3001/#/site";
+      }
+      window.location.href = "http://localhost:3001/#/site";
     } else {
       this.registerMessage.elem.textContent = "Incorrect user data ";
     }

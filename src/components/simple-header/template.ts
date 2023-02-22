@@ -20,11 +20,11 @@ function template() {
   <div class="lang-container">
   <div class="lang-ico"></div>
     <ul class="lang-list">
-      <li class="lang-item"><span class="lang-link" data-language="be">be</span></li>
+      <li class="lang-item"><span class="lang-span" data-language="be">be</span></li>
       <li class="lang-item"><span class="slash">/</span></li>
-      <li class="lang-item"><span class="lang-link" data-language="en">en</span></li>
+      <li class="lang-item"><span class="lang-span" data-language="en">en</span></li>
       <li class="lang-item"><span class="slash">/</span></li>
-      <li class="lang-item"><span class="lang-link" data-language="uk">uk</span></li>
+      <li class="lang-item"><span class="lang-span" data-language="uk">uk</span></li>
     </ul>
   </div>
   <div class="overlay"></div>`;

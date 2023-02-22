@@ -1,6 +1,14 @@
 import { loginUser } from "../../../api/api";
 import Model from "../../../model/model";
-import { ILoginUser, IUserData, MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
+import {
+  ILoginUser,
+  IUserData,
+  MAIL_REGEXP,
+  Methods,
+  PASSWORD_REGEXP,
+  SERVER_URL,
+  StatusCodes,
+} from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
 import "./login-form.css";
@@ -20,6 +28,7 @@ class LoginForm extends Component {
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "form", ["login-form"], "");
+    // this.elem.setAttribute("action", `${SERVER_URL}/api/auth/login`);
 
     const eMailContainer = new Component(this.elem, "div", ["form-item", "item"]);
     this.eMailInput = new InputComponent(
@@ -56,6 +65,7 @@ class LoginForm extends Component {
     this.loginMessage = new Component(messageContainer.elem, "div", ["login-message"], "");
 
     this.loginButton = new Component(this.elem, "button", ["btn", "login-button"], "Log in");
+    this.loginButton.elem.setAttribute("type", "submit");
     const forgotPasswordContainer = new Component(this.elem, "div", ["forgot-container"], "");
     this.forgotPasswordLink = new Component(
       forgotPasswordContainer.elem,
@@ -64,14 +74,20 @@ class LoginForm extends Component {
       "Forgot your password?",
     );
     this.forgotPasswordLink.elem.setAttribute("href", "#");
+
+    this.elem.addEventListener("submit", (e) => this.validateLoginData(e));
   }
 
-  public async loginUser(user: ILoginUser): Promise<IUserData | null> {
-    const userData = await loginUser(user);
-    return userData;
+  private async loginUser(user: ILoginUser): Promise<Response> {
+    const res = await loginUser(user);
+    const data = await res.json();
+    this.loginMessage.elem.textContent = data.message || "";
+    console.log(data);
+    return res;
   }
 
-  private async validateLoginData() {
+  private async validateLoginData(e: SubmitEvent) {
+    e.preventDefault();
     const isEmail = MAIL_REGEXP.test(this.eMailInput.elem.value) && this.eMailInput.elem.value.trim() !== "";
     const isPasssword = PASSWORD_REGEXP.test(this.passwordInput.elem.value)
       && this.passwordInput.elem.value.trim() !== "";
@@ -80,22 +96,24 @@ class LoginForm extends Component {
       const login = <string> this.eMailInput.elem.value;
       const password = <string> this.passwordInput.elem.value;
       const user: ILoginUser = { login, password };
-      const data = await this.loginUser(user);
-      /* if (data) { */
-      const model = new Model();
-      const state = model.getState();
-      console.log(JSON.stringify(state));
-      model.setState({
-        ...state,
-        userId: <string>data?.userId,
-        userName: <string>data?.fullName,
-        token: <string>data?.token,
-      });
-      console.log(JSON.stringify(state));
-      window.location.hash = "#/site";
-      // }
+      const res = await this.loginUser(user);
+      console.log(res);
+      if (res.status === StatusCodes.Ok) {
+        const data = await res.json();
+        const model = new Model();
+        const state = model.getState();
+        console.log(JSON.stringify(state));
+        model.setState({
+          ...state,
+          userId: <string>data.userId,
+          userName: <string>data.fullName,
+          token: <string>data.token,
+        });
+        console.log(JSON.stringify(state));
+        // window.location.href = "http://localhost:3001/#/site";
+      }
     } else {
-      this.loginMessage.elem.textContent = "Incorrect login data ";
+      this.loginMessage.elem.textContent = "Incorrect login data!";
     }
   }
 

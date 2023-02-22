@@ -54,9 +54,9 @@
   color: var(--hover-color);
 }
 
-.nav-link .active {
+/*.nav-link.active {
   color: #f56932;
-}
+}*/
 
 .login {
   margin-right: 2rem;
@@ -106,26 +106,26 @@
   align-items: center;
 }
 
-.lang-link {
+.lang-span {
   transition: 0.3s;
 
   cursor: pointer;
 }
 
-.lang-link:hover {
+.lang-span:hover {
   filter: var(--filter-orange);
 }
 
-.lang-link.active {
-  color: var(--hover-color);
+/*.lang-span .active {
+  color: #f56932;
+}*/
 
-  transition: 0.3s;
-
-  cursor: pointer;
-}
-
-.lang-link.active:hover {
+/*.lang-span.active:hover {
   filter: var(--filter-orange);
+}*/
+
+.active {
+  color: #f56932;
 }
 
 /* -------- Burger Menu --------- */

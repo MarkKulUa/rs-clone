@@ -28,7 +28,7 @@ export interface AppRoute {
 
 export interface ICreateUser {
   email: string;
-  fullname: string;
+  fullName: string;
   password: string;
 }
 
@@ -44,6 +44,10 @@ export interface IUserData {
   refreshToken: string;
   userId: string; // "63e75c473192dabecf01a8c2";
   notifications: [];
+}
+
+export interface IMessage {
+  message: string;
 }
 
 export enum Gender {
