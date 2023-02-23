@@ -3,8 +3,8 @@ import Model from "../../../model/model";
 import {
   ICreateUser,
   ILoginUser,
+  ILoginData,
   IMessage,
-  IUserData,
   MAIL_REGEXP,
   Methods,
   PASSWORD_REGEXP,
@@ -46,7 +46,7 @@ class RegisterForm extends Component {
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "form", ["register-form"], "");
-    this.elem.setAttribute("action", `${SERVER_URL}/api/auth/register`);
+    // this.elem.setAttribute("action", `${SERVER_URL}/api/auth/register`);
 
     const registerTitle = new Component(this.elem, "div", ["register-title"], "Sign up with Email");
     this.genderForm = new GenderForm(this.elem);
@@ -223,7 +223,7 @@ class RegisterForm extends Component {
       }
       window.location.href = "http://localhost:3001/#/site";
     } else {
-      this.registerMessage.elem.textContent = "Incorrect user data ";
+      this.registerMessage.elem.textContent = "Incorrect user data!";
     }
   }
 

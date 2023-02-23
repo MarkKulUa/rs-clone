@@ -2,7 +2,7 @@ import { loginUser } from "../../../api/api";
 import Model from "../../../model/model";
 import {
   ILoginUser,
-  IUserData,
+  ILoginData,
   MAIL_REGEXP,
   Methods,
   PASSWORD_REGEXP,

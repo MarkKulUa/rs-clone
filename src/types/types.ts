@@ -37,13 +37,22 @@ export interface ILoginUser {
   password: string;
 }
 
-export interface IUserData {
+export interface ILoginData {
   email: string;
   fullName: string;
   token: string;
   refreshToken: string;
   userId: string; // "63e75c473192dabecf01a8c2";
   notifications: [];
+}
+
+export interface IUser {
+  trees: [];
+  notifications: [];
+  _id: string;
+  email: string;
+  password: string;
+  fullName: string;
 }
 
 export interface IMessage {
@@ -55,7 +64,7 @@ export enum Gender {
   Female = "Female",
 }
 
-export interface Person {
+export interface IPerson {
   gender: Gender;
   birthYear: number;
   birthDate: Date;
@@ -71,6 +80,39 @@ export interface Person {
   address: string;
   email: string;
   phone: string;
+  ownerId: string;
+}
+
+export interface IEvent {
+  title: string;
+  dateTime: Date;
+  place: string;
+  description: string;
+  isFamily: boolean;
+}
+
+export interface IPhoto {
+  date: Date;
+  place: string;
+  album: string;
+  notes: string;
+  link: string;
+}
+
+export interface IUserData {
+  userId: string;
+  fullName: string;
+  age: number;
+  avatar: string;
+  email: string;
+  country: string;
+  siteId: string;
+  siteDate: Date;
+  siteCover: string;
+  visits: number;
+  events: IEvent[];
+  persons: IPerson[];
+  photos: IPhoto[];
 }
 
 export const MAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;

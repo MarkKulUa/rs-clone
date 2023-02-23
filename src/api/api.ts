@@ -1,8 +1,9 @@
 import {
   ICreateUser,
   ILoginUser,
+  ILoginData,
   IMessage,
-  IUserData,
+  IUser,
   Methods,
   SERVER_URL,
   StatusCodes,
@@ -57,5 +58,43 @@ export const logoutUser = async (userId: string): Promise<string> => {
   } catch (error) {
     console.log(error);
     throw new Error(String(error));
+  }
+};
+
+export const getUser = async (userId: string, token: string): Promise<IUser | null> => {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/user/${userId}`, {
+      method: Methods.GET,
+      headers: {
+        "Content-Type": `application/json, Authorization: Bearer ${token}`,
+      },
+    });
+    const data: IUser = await res.json();
+
+    if (res.status === StatusCodes.Ok) {
+      return data;
+    }
+    return null;
+  } catch (error) {
+    throw new Error(String(error));
+  }
+};
+
+export const getUsers = async (token: string): Promise<{ users: Array<IUser> } | null> => {
+  try {
+    const res = await fetch(`${SERVER_URL}//api/user/get-users`, {
+      method: Methods.GET,
+      headers: {
+        "Content-Type": `application/json, Authorization: Bearer ${token}`,
+      },
+    });
+    const data: IUser[] = await res.json();
+
+    if (res.status === StatusCodes.Ok) {
+      return { users: data };
+    }
+    return null;
+  } catch (err) {
+    throw new Error("No users on portal");
   }
 };
