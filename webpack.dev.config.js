@@ -27,7 +27,7 @@ module.exports = {
         return !/hot-update/i.test(filePath);
       },
     },
-    port: 3001,
+    port: 3000,
     open: true,
     hot: true,
     client: {

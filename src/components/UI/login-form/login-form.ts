@@ -109,7 +109,7 @@ class LoginForm extends Component {
         });
         console.log(JSON.stringify(Model.getState()));
         closeLoginPopup();
-        window.location.href = "http://localhost:3001/#/site";
+        window.location.href = "http://localhost:3000/#/site";
       }
     } else {
       this.loginMessage.elem.textContent = "Incorrect login data!";
