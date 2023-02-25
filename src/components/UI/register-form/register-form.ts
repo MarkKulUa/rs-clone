@@ -1,6 +1,19 @@
-import { MAIL_REGEXP, Methods, PASSWORD_REGEXP } from "../../../types/types";
+import { createUser, loginUser } from "../../../api/api";
+import Model from "../../../model/model";
+import {
+  ICreateUser,
+  ILoginUser,
+  ILoginData,
+  IMessage,
+  MAIL_REGEXP,
+  Methods,
+  PASSWORD_REGEXP,
+  SERVER_URL,
+  StatusCodes,
+} from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
+import LoginForm from "../login-form/login-form";
 import GenderForm from "../radio-forms/gender-form";
 import "./register-form.css";
 
@@ -33,7 +46,7 @@ class RegisterForm extends Component {
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "form", ["register-form"], "");
-    this.elem.setAttribute("method", Methods.POST);
+    // this.elem.setAttribute("action", `${SERVER_URL}/api/auth/register`);
 
     const registerTitle = new Component(this.elem, "div", ["register-title"], "Sign up with Email");
     this.genderForm = new GenderForm(this.elem);
@@ -149,19 +162,65 @@ class RegisterForm extends Component {
     this.registerMessage = new Component(messageContainer.elem, "div", ["register-message"], "");
 
     this.registerButton = new Component(this.elem, "button", ["btn", "register-button"], "Sign up");
+    this.registerButton.elem.setAttribute("type", "submit");
 
-    this.registerButton.elem.addEventListener("click", () => this.validateData());
+    // this.registerButton.elem.addEventListener("click", () => this.validateRegisterData(), true);
+    this.elem.addEventListener("submit", (e) => this.validateRegisterData(e));
+    /* this.elem.addEventListener("submit", (e) => {
+      e.preventDefault();
+    }); */
   }
 
-  private validateData() {
+  private async createUser(user: ICreateUser): Promise<Response> {
+    const res = await createUser(user);
+    const data = await res.json();
+    console.log(data);
+    this.registerMessage.elem.textContent = data.message || "";
+    return res;
+  }
+
+  private async loginUser(user: ILoginUser): Promise<Response> {
+    const res = await loginUser(user);
+    const data = await res.json();
+    this.registerMessage.elem.textContent = data.message || "";
+    console.log(data);
+    return res;
+  }
+
+  private async validateRegisterData(e: SubmitEvent) {
+    e.preventDefault();
     const isEmail = MAIL_REGEXP.test(this.registerEMailInput.elem.value)
       && this.registerEMailInput.elem.value.trim() !== "";
     const isPasssword = PASSWORD_REGEXP.test(this.registerPasswordInput.elem.value)
       && this.registerPasswordInput.elem.value.trim() !== "";
     if (isEmail && isPasssword) {
       this.registerMessage.elem.textContent = "";
+      const email = <string> this.registerEMailInput.elem.value;
+      const fullName = `${this.registerFirstName.elem.value} ${this.registerLastName.elem.value}`;
+      const password = <string> this.registerPasswordInput.elem.value;
+      const newUser: ICreateUser = { email, fullName, password };
+      console.log(JSON.stringify(newUser));
+      const res = await this.createUser(newUser);
+      console.log(res.status);
+      const user: ILoginUser = { email, password };
+      console.log(JSON.stringify(user));
+      const loginRes = await this.loginUser(user);
+      console.log(loginRes);
+      if (loginRes.status === StatusCodes.Ok) {
+        const data = await loginRes.json();
+        // const model = new Model();
+        // const state = model.getState();
+        // console.log(JSON.stringify(state));
+        Model.setState({
+          userId: <string>data.userId,
+          userName: <string>data.fullName,
+          token: <string>data.token,
+        });
+        console.log(JSON.stringify(Model.getState()));
+        window.location.href = "http://localhost:3001/#/site";
+      }
     } else {
-      this.registerMessage.elem.textContent = "Incorrect input data ";
+      this.registerMessage.elem.textContent = "Incorrect user data!";
     }
   }
 

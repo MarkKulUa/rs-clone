@@ -41,8 +41,12 @@ class App {
     // this.render();
 
     /* const model = new Model();
+    const state = model.getState();
+    model.setState({
+      ...state,
+    }); */
 
-    cardsInfo().then((res) => {
+    /* cardsInfo().then((res) => {
 
       const state = model.getState();
 

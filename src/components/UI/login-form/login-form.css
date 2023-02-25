@@ -79,7 +79,7 @@
   content: "";
 }
 
-.login--message {
+.login-message {
   color: var(--alert-color);
 }
 

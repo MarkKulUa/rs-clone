@@ -1,6 +1,6 @@
 function template() {
   return `
-  <a class="nav-link logo" href="#/"></a>
+  <a class="nav-link logo" href="#/" id="title"></a>
   <nav class="nav">
     <ul class="nav-list">
       <li class="nav-item">
@@ -20,11 +20,11 @@ function template() {
   <div class="lang-container">
   <div class="lang-ico"></div>
     <ul class="lang-list">
-      <li class="lang-item"><span class="lang-link" data-language="be">be</span></li>
+      <li class="lang-item"><span class="lang-span" data-language="be">be</span></li>
       <li class="lang-item"><span class="slash">/</span></li>
-      <li class="lang-item"><span class="lang-link" data-language="en">en</span></li>
+      <li class="lang-item"><span class="lang-span" data-language="en">en</span></li>
       <li class="lang-item"><span class="slash">/</span></li>
-      <li class="lang-item"><span class="lang-link" data-language="uk">uk</span></li>
+      <li class="lang-item"><span class="lang-span" data-language="uk">uk</span></li>
     </ul>
   </div>
   <div class="overlay"></div>`;

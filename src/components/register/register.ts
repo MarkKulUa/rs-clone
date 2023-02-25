@@ -1,3 +1,5 @@
+import { createUser } from "../../api/api";
+import { ICreateUser } from "../../types/types";
 import Component from "../../utils/component";
 import PopupTitle from "../UI/popup-title/popup-title";
 import RegisterForm from "../UI/register-form/register-form";
@@ -67,7 +69,6 @@ class Register extends Component {
     if (this.elem.classList.contains("open")) {
       this.elem.classList.remove("open");
       document.body.classList.remove("scroll-lock");
-      console.log(this.elem);
     }
   };
 }

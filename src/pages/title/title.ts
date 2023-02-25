@@ -1,4 +1,5 @@
 import SimpleHeader from "../../components/simple-header/simple-header";
+import Model from "../../model/model";
 import Component from "../../utils/component";
 import template from "./template";
 import "./title.css";
