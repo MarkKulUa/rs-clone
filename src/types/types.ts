@@ -1,11 +1,11 @@
-import Model from "../model/model";
-
 // Стейт как пропсы всего приложения
 export interface IState {
   lang: string;
+  navLink: string;
   userId: string;
   userName: string;
   token: string;
+  rToken: string;
   searchQuery: string;
   perPage?: number;
   sortBy?: string;
@@ -23,7 +23,7 @@ export interface IMain {
 
 export interface AppRoute {
   name: string;
-  drawComponent: (model: Model) => void;
+  drawComponent: (params?: string) => void;
 }
 
 export interface ICreateUser {
@@ -33,7 +33,7 @@ export interface ICreateUser {
 }
 
 export interface ILoginUser {
-  login: string;
+  email: string;
   password: string;
 }
 
@@ -53,6 +53,10 @@ export interface IUser {
   email: string;
   password: string;
   fullName: string;
+}
+
+export interface ILogoutUser {
+  userId: string;
 }
 
 export interface IMessage {

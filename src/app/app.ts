@@ -4,7 +4,6 @@ import Router from "../router";
 import Footer from "../components/footer/footer";
 import Login from "../components/login/login";
 import Register from "../components/register/register";
-import Model from "../model/model";
 
 class App {
   private login;
@@ -41,11 +40,11 @@ class App {
   start(): void {
     // this.render();
 
-    const model = new Model();
+    /* const model = new Model();
     const state = model.getState();
     model.setState({
       ...state,
-    });
+    }); */
 
     /* cardsInfo().then((res) => {
 
@@ -56,7 +55,7 @@ class App {
         products: res.products,
       }); */
 
-    this.router.initRouter(model);
+    this.router.initRouter();
     // });
   }
 }

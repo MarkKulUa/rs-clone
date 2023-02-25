@@ -1,4 +1,3 @@
-import Model from "../../model/model";
 import Component from "../../utils/component";
 import "./site.css";
 
@@ -15,7 +14,7 @@ class SitePage extends Component {
 
   private photoLoaderBtn;
 
-  constructor(parentNode: HTMLElement, model: Model) {
+  constructor(parentNode: HTMLElement) {
     parentNode.innerHTML = "";
     super(parentNode, "div", ["site-page"]);
     this.sitePageContainer = new Component(this.elem, "div", ["site-container"], "");

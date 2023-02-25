@@ -1,6 +1,6 @@
 function template() {
   return `
-  <a class="nav-link logo" href="#/"></a>
+  <a class="nav-link logo" href="#/" id="title"></a>
   <nav class="nav">
     <ul class="nav-list">
       <li class="nav-item">

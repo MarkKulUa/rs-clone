@@ -11,6 +11,7 @@ import {
 } from "../../../types/types";
 import Component from "../../../utils/component";
 import InputComponent from "../../../utils/input-component";
+import { closeLoginPopup } from "../../../utils/popup";
 import "./login-form.css";
 
 class LoginForm extends Component {
@@ -28,7 +29,6 @@ class LoginForm extends Component {
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "form", ["login-form"], "");
-    // this.elem.setAttribute("action", `${SERVER_URL}/api/auth/login`);
 
     const eMailContainer = new Component(this.elem, "div", ["form-item", "item"]);
     this.eMailInput = new InputComponent(
@@ -80,9 +80,10 @@ class LoginForm extends Component {
 
   private async loginUser(user: ILoginUser): Promise<Response> {
     const res = await loginUser(user);
-    const data = await res.json();
-    this.loginMessage.elem.textContent = data.message || "";
-    console.log(data);
+    if (res.status !== StatusCodes.Ok) {
+      const data = await res.json();
+      this.loginMessage.elem.textContent = data.message || "";
+    }
     return res;
   }
 
@@ -93,24 +94,22 @@ class LoginForm extends Component {
       && this.passwordInput.elem.value.trim() !== "";
     if (isEmail && isPasssword) {
       this.loginMessage.elem.textContent = "";
-      const login = <string> this.eMailInput.elem.value;
+      const email = <string> this.eMailInput.elem.value;
       const password = <string> this.passwordInput.elem.value;
-      const user: ILoginUser = { login, password };
+      const user: ILoginUser = { email, password };
       const res = await this.loginUser(user);
-      console.log(res);
       if (res.status === StatusCodes.Ok) {
         const data = await res.json();
-        const model = new Model();
-        const state = model.getState();
-        console.log(JSON.stringify(state));
-        model.setState({
-          ...state,
+        this.loginMessage.elem.textContent = data.message || "";
+        Model.setState({
           userId: <string>data.userId,
           userName: <string>data.fullName,
           token: <string>data.token,
+          rToken: <string>data.rToken,
         });
-        console.log(JSON.stringify(state));
-        // window.location.href = "http://localhost:3001/#/site";
+        console.log(JSON.stringify(Model.getState()));
+        closeLoginPopup();
+        window.location.href = "http://localhost:3001/#/site";
       }
     } else {
       this.loginMessage.elem.textContent = "Incorrect login data!";

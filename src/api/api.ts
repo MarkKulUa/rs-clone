@@ -7,6 +7,7 @@ import {
   Methods,
   SERVER_URL,
   StatusCodes,
+  ILogoutUser,
 } from "../types/types";
 
 export const createUser = async (user: ICreateUser): Promise<Response> => {
@@ -41,7 +42,23 @@ export const loginUser = async (loginData: ILoginUser): Promise<Response> => {
   }
 };
 
-export const logoutUser = async (userId: string): Promise<string> => {
+export const refreshToken = async (token: string): Promise<Response> => {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/auth/refresh_token`, {
+      method: Methods.POST,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(token),
+    });
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw new Error(String(error));
+  }
+};
+
+export const logoutUser = async (userId: ILogoutUser): Promise<Response> => {
   try {
     const res = await fetch(`${SERVER_URL}/api/auth/logout`, {
       method: Methods.POST,
@@ -50,11 +67,7 @@ export const logoutUser = async (userId: string): Promise<string> => {
       },
       body: JSON.stringify(userId),
     });
-    if (res.status === StatusCodes.Ok) {
-      const data = await res.json();
-      return data.message;
-    }
-    return "";
+    return res;
   } catch (error) {
     console.log(error);
     throw new Error(String(error));
@@ -66,7 +79,8 @@ export const getUser = async (userId: string, token: string): Promise<IUser | nu
     const res = await fetch(`${SERVER_URL}/api/user/${userId}`, {
       method: Methods.GET,
       headers: {
-        "Content-Type": `application/json, Authorization: Bearer ${token}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
     const data: IUser = await res.json();
@@ -85,7 +99,8 @@ export const getUsers = async (token: string): Promise<{ users: Array<IUser> } |
     const res = await fetch(`${SERVER_URL}//api/user/get-users`, {
       method: Methods.GET,
       headers: {
-        "Content-Type": `application/json, Authorization: Bearer ${token}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
     const data: IUser[] = await res.json();

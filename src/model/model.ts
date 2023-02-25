@@ -7,10 +7,12 @@ class Model {
 
   constructor() {
     this.state = {
-      lang: "en",
-      userId: "",
-      userName: "",
-      token: "",
+      lang: localStorage.getItem("lang") ?? "en",
+      navLink: localStorage.getItem("navLink") ?? "",
+      userId: localStorage.getItem("userId") ?? "",
+      userName: localStorage.getItem("userName") ?? "",
+      token: localStorage.getItem("token") ?? "",
+      rToken: localStorage.getItem("rToken") ?? "",
       searchQuery: "",
     };
     this.subscribers = [];
@@ -18,8 +20,9 @@ class Model {
 
   getState = () => structuredClone(this.state);
 
-  setState = (state: IState) => {
-    this.state = state;
+  setState = (state: Partial<IState>) => {
+    this.state = { ...this.state, ...state };
+    // this.state = state;
     this.fire();
   };
 
@@ -27,9 +30,9 @@ class Model {
     this.subscribers.push(callback);
   };
 
-  fire = () => {
+  private fire = () => {
     this.subscribers.forEach((cb) => cb(this.getState()));
   };
 }
 
-export default Model;
+export default new Model();

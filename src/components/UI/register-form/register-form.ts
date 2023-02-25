@@ -202,26 +202,23 @@ class RegisterForm extends Component {
       console.log(JSON.stringify(newUser));
       const res = await this.createUser(newUser);
       console.log(res.status);
-      const login = email;
-      const user: ILoginUser = { login, password };
+      const user: ILoginUser = { email, password };
       console.log(JSON.stringify(user));
       const loginRes = await this.loginUser(user);
       console.log(loginRes);
       if (loginRes.status === StatusCodes.Ok) {
         const data = await loginRes.json();
-        const model = new Model();
-        const state = model.getState();
-        console.log(JSON.stringify(state));
-        model.setState({
-          ...state,
+        // const model = new Model();
+        // const state = model.getState();
+        // console.log(JSON.stringify(state));
+        Model.setState({
           userId: <string>data.userId,
           userName: <string>data.fullName,
           token: <string>data.token,
         });
-        console.log(JSON.stringify(state));
-        // window.location.href = "http://localhost:3001/#/site";
+        console.log(JSON.stringify(Model.getState()));
+        window.location.href = "http://localhost:3001/#/site";
       }
-      window.location.href = "http://localhost:3001/#/site";
     } else {
       this.registerMessage.elem.textContent = "Incorrect user data!";
     }

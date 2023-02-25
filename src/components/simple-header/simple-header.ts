@@ -10,7 +10,7 @@ class SimpleHeader extends Component {
 
   public langSpans;
 
-  constructor(parentNode: HTMLElement, model: Model) {
+  constructor(parentNode: HTMLElement) {
     super(parentNode, "div", ["container", "simple-header"]);
     this.appendHTML(template());
 
@@ -24,9 +24,12 @@ class SimpleHeader extends Component {
 
   private setActiveItem = () => {
     this.navLinks.forEach((item) => {
-      item.classList.remove("active");
+      item.classList.remove("active-color");
       if (item.getAttribute("href") === window.location.hash) {
-        item.classList.add("active");
+        item.classList.add("active-color");
+        Model.setState({
+          navLink: item.getAttribute("href") ?? "",
+        });
       }
     });
     /* const model = new Model();
@@ -49,7 +52,7 @@ class SimpleHeader extends Component {
         item.classList.add("active");
       }
     }); */
-    // setActiveNavLink(e);
+    setActiveNavLink(e);
     setActiveLanguage(e);
     openLoginPopup(e);
   };

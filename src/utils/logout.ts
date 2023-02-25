@@ -1,17 +1,27 @@
 import { logoutUser } from "../api/api";
 import Model from "../model/model";
-import { StatusCodes } from "../types/types";
+import { ILogoutUser, StatusCodes } from "../types/types";
 
 const logoutAccount = async (e: MouseEvent): Promise<void> => {
   const logoutLink = <Element>document.querySelector(".logout");
-  const model = new Model();
-  const state = model.getState();
   if (e.target === logoutLink) {
-    const data = await logoutUser(state.userId);
-    model.setState({
-      ...state,
-      userId: "",
-    });
+    const state = Model.getState();
+    console.log(state.userId);
+    const { userId } = state;
+    const user: ILogoutUser = { userId };
+    const res = await logoutUser(user);
+    console.log(res);
+    if (res.status === StatusCodes.Ok) {
+      const data = await res.json();
+      console.log(data);
+      Model.setState({
+        userId: "",
+        userName: "",
+        token: "",
+        rToken: "",
+      });
+      window.location.hash = "#/";
+    }
   }
 };
 

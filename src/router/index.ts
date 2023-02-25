@@ -6,13 +6,10 @@ import burgerAction from "../components/simple-header/burger-action";
 import handleElementScroll from "../pages/about/animation";
 import animationRecords from "../pages/about/animation-records";
 import carousel from "../pages/about/quotes-carousel";
-import Model from "../model/model";
 import Header from "../components/header/header";
 import TeamPage from "../pages/team/team";
 
 class Router {
-  model: Model;
-
   private routes: Array<AppRoute>;
 
   private defaultRoute: AppRoute;
@@ -30,30 +27,29 @@ class Router {
   currentRoute: string;
 
   constructor(private rootElement: HTMLElement) {
-    this.model = new Model();
     this.routes = [
       {
         name: "/",
-        drawComponent: (model) => {
-          this.titlePage = new TitlePage(this.rootElement, model);
+        drawComponent: () => {
+          this.titlePage = new TitlePage(this.rootElement);
         },
       },
       {
         name: "/about",
-        drawComponent: (model) => {
-          this.aboutPage = new AboutProject(this.rootElement, model);
+        drawComponent: () => {
+          this.aboutPage = new AboutProject(this.rootElement);
         },
       },
       {
         name: "/team",
-        drawComponent: (model) => {
+        drawComponent: () => {
           // this.teamPage = new TeamPage(this.rootElement);
-          this.titlePage = new TitlePage(this.rootElement, model);
+          this.titlePage = new TitlePage(this.rootElement);
         },
       },
       {
         name: "/site",
-        drawComponent: (model) => {
+        drawComponent: (params) => {
           this.rootElement.innerHTML = "";
           this.header = new Header(this.rootElement);
         },
@@ -64,8 +60,8 @@ class Router {
 
     this.defaultRoute = {
       name: "",
-      drawComponent: (model) => {
-        this.titlePage = new TitlePage(this.rootElement, model);
+      drawComponent: () => {
+        this.titlePage = new TitlePage(this.rootElement);
       },
     };
   }
@@ -96,16 +92,10 @@ class Router {
 
     if (!currRoute) {
       this.currentRoute = currRouteName;
-      this.defaultRoute.drawComponent(this.model);
+      this.defaultRoute.drawComponent();
     } else {
       if (currRouteParam === "") {
         window.location.hash = currRouteFromHash;
-        console.log(window.location.href);
-        console.log(window.location.host);
-        console.log(window.location.hostname);
-        console.log(window.location.pathname);
-        console.log(window.location.search);
-        console.log(window.location.hash);
       } else {
         window.location.hash = `${currRoute.name}?${currRouteParam}`;
         console.log(`${currRoute.name}?${currRouteParam}`);
@@ -117,7 +107,7 @@ class Router {
       //   } else {
       //     currRoute.component(currRouteParam, this.model);
       //   }
-      currRoute.drawComponent(this.model);
+      currRoute.drawComponent();
       this.currentRoute = (currRoute || this.defaultRoute).name;
     }
     burgerAction();
@@ -126,9 +116,7 @@ class Router {
     carousel();
   }
 
-  initRouter(model: Model): void {
-    this.model = model;
-
+  initRouter(): void {
     if (window.location.hash === "") {
       window.location.hash = "#/";
     }

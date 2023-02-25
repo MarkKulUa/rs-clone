@@ -3,17 +3,13 @@ import Model from "../model/model";
 export const setActiveNavLink = (e: MouseEvent) => {
   const navLinks = document.querySelectorAll(".nav-link");
   navLinks.forEach((item) => {
-    item.classList.remove("active");
+    item.classList.remove("active-color");
     if (item === e.target) {
-      item.classList.add("active");
-      /* const model = new Model();
-      const state = model.getState();
-      console.log(state.lang);
-      model.setState({
-        ...state,
-        lang: <string>item.textContent,
+      item.classList.add("active-color");
+      Model.setState({
+        navLink: item.getAttribute("href") ?? "",
       });
-      console.log(model); */
+      console.log(Model.getState());
     }
   });
 };
@@ -21,17 +17,13 @@ export const setActiveNavLink = (e: MouseEvent) => {
 export const setActiveLanguage = (e: MouseEvent) => {
   const langSpans = document.querySelectorAll(".lang-span");
   langSpans.forEach((item) => {
-    item.classList.remove("active");
+    item.classList.remove("active-color");
     if (item === e.target) {
-      item.classList.add("active");
-      const model = new Model();
-      const state = model.getState();
-      console.log(state.lang);
-      model.setState({
-        ...state,
+      item.classList.add("active-color");
+      Model.setState({
         lang: <string>item.textContent,
       });
-      console.log(model);
+      console.log(Model.getState());
     }
   });
 };

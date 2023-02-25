@@ -10,11 +10,11 @@ class TitlePage extends Component {
 
   private simpleHeader: SimpleHeader;
 
-  constructor(parentNode: HTMLElement, model: Model) {
+  constructor(parentNode: HTMLElement) {
     parentNode.innerHTML = "";
     super(parentNode, "div", ["title-page"]);
     this.titlePageContainer = new Component(this.elem, "div", ["title-container", "container"], "");
-    this.simpleHeader = new SimpleHeader(this.titlePageContainer.elem, model);
+    this.simpleHeader = new SimpleHeader(this.titlePageContainer.elem);
     this.titlePageContainer.appendHTML(template());
   }
 }
