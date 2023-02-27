@@ -1,0 +1,21 @@
+.social-divider {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0 0.5rem;
+}
+
+.divider-line {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  flex-grow: 1;
+  height: 11px;
+}
+
+.divider-text {
+  padding: 0 20px;
+
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #6e6e6e;
+}

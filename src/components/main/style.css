@@ -1,0 +1,39 @@
+.main {
+  background-image: url("../../assets/img/main&about/main_bg.webp");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  transform: scaleX(1);
+  width: 100%;
+}
+
+.main .container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title_wrapper {
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  flex-direction: column;
+  font-size: 22px;
+  letter-spacing: .3px;
+  line-height: 28px;
+  margin: 250px 0 0 0;
+  max-width: 445px;
+}
+
+.title {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 62px;
+  margin-bottom: 15px;
+}
+
+.title_wrapper p {
+  letter-spacing: 1px;
+}

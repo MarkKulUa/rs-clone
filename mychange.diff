@@ -1,0 +1,257 @@
+diff --git a/src/components/App.ts b/src/components/App.ts
+index 709a19e..6489267 100644
+--- a/src/components/App.ts
++++ b/src/components/App.ts
+@@ -15,9 +15,9 @@ class App {
+     };
+   }
+ 
+-  async initState() {
+-    const { page, perPage } = this.state;
+-  }
++  // async initState() {
++  //   const { page, perPage } = this.state;
++  // }
+ 
+   handleSection(target: HTMLButtonElement) {
+     if (target.dataset.page === "section1") {
+@@ -44,7 +44,7 @@ class App {
+   }
+ 
+   async render() {
+-    await this.initState();
++    // await this.initState();
+     const header = new Header({
+       section: this.state.section,
+       handleSection: this.handleSection,
+diff --git a/src/components/header/index.ts b/src/components/header/index.ts
+index 9d99903..d3d421d 100644
+--- a/src/components/header/index.ts
++++ b/src/components/header/index.ts
+@@ -13,7 +13,24 @@ class Header {
+     const header = document.createElement("header");
+     header.classList.add("header");
+     // header.classList.add("simple_header");
+-    header.innerHTML = template(this.props.section);
++    header.innerHTML = template();
++
++    const burger = header.querySelector(".burger") as HTMLElement;
++    const nav = header.querySelector(".nav-list") as HTMLElement;
++    const overlay = header.querySelector(".overlay") as HTMLElement;
++
++    burger.addEventListener("click", () => {
++      nav.classList.toggle("show");
++      burger.classList.toggle("open");
++      overlay.classList.toggle("overlay-active");
++    });
++
++    overlay.addEventListener("click", () => {
++      nav.classList.remove("show");
++      burger.classList.remove("open");
++      nav.classList.add("hide");
++      overlay.classList.remove("overlay-active");
++    });
+ 
+     return header;
+   }
+diff --git a/src/components/header/style.css b/src/components/header/style.css
+index 4502053..fcc3f11 100644
+--- a/src/components/header/style.css
++++ b/src/components/header/style.css
+@@ -21,11 +21,17 @@
+   width: 16px;
+ }
+ 
++.nav {
++  position: relative;
++  z-index: 1;
++}
++
+ .nav-list {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(1rem + 0.5vw);
++  transition-duration: .25s;
+ }
+ 
+ .nav-item:last-child {
+@@ -42,3 +48,116 @@
+   text-underline-offset: 5px;
+ }
+ 
++.burger {
++  display: none;
++  cursor: pointer;
++}
++
++.line1, .line2, .line3 {
++  width: 25px;
++  height: 3px;
++  background-color: white;
++  margin: 5px;
++}
++
++.line1 {
++  transform: rotate(0);
++  margin-top: 5px;
++  transition: all 0.3s ease;
++}
++
++.line2 {
++  opacity: 1;
++  transition: all 0.3s ease;
++}
++
++.line3 {
++  transform: rotate(0);
++  margin-top: 5px;
++  transition: all 0.3s ease;
++}
++
++.burger.open .line1 {
++  transform: rotate(45deg) translate(5px, 5px);
++}
++
++.burger.open .line2 {
++  opacity: 0;
++}
++
++.burger.open .line3 {
++  transform: rotate(-45deg) translate(6px, -6px);
++}
++
++.overlay {
++  position: fixed;
++  top: 0;
++  left: 0;
++  right: 0;
++  bottom: 0;
++  background-color: rgba(0, 0, 0, 0.5);
++  visibility: hidden;
++  opacity: 0;
++  transition: visibility 0s, opacity 0.5s linear;
++}
++
++.overlay-active {
++  visibility: visible;
++  opacity: 1;
++  transition-delay: 0s;
++}
++
++@media screen and (max-width:768px) {
++
++  .overlay-active {
++    visibility: visible;
++    opacity: 1;
++    transition-delay: 0s;
++  }
++  
++  .nav-item {
++    width: 80px;
++  }
++
++  .nav-list {
++    overflow: hidden;
++    display: none;
++    cursor: auto;
++    z-index: -1;
++    width: 40vw;
++    height: auto;
++    background: #282828;
++    position: absolute;
++    top: 0;
++    right: 0;
++    flex-direction: column;
++    align-items: flex-start;
++    justify-content: flex-start;
++    padding: 30px 30px;
++    gap: 10px;
++   
++  }
++  
++  .burger {
++    display: block;
++    z-index: 1;
++  }
++
++  .nav-list {
++    font-size: calc(1.2rem + 0.3vw);
++  }
++
++  @keyframes showNav {
++    0% {
++      width: 10vw;
++    }
++    100% {
++      width: 40vw;
++    }
++  }
++  
++  .show {
++    animation: showNav 0.7s ease forwards;
++    display: flex;
++  }
++}
+diff --git a/src/components/header/template.ts b/src/components/header/template.ts
+index e84abd1..edc20a5 100644
+--- a/src/components/header/template.ts
++++ b/src/components/header/template.ts
+@@ -1,7 +1,12 @@
+-function template(page: string | undefined) {
++function template() {
+   return `<div class="container simple_header">
+     <div class="logo"></div>
+     <nav class="nav">
++      <div class="burger" id="burger-menu">
++        <div class="line1"></div>
++        <div class="line2"></div>
++        <div class="line3"></div> 
++      </div>
+       <ul class="nav-list">
+         <li class="nav-item">
+           <a href="#" id="about">О проекте</a>
+@@ -21,6 +26,7 @@ function template(page: string | undefined) {
+         </li>
+       </ul>
+     </nav>
++    <div class="overlay"></div>
+   </div>`;
+ }
+ 
+diff --git a/src/components/main/index.ts b/src/components/main/index.ts
+index 07dede1..ce36116 100644
+--- a/src/components/main/index.ts
++++ b/src/components/main/index.ts
+@@ -13,7 +13,7 @@ class Main {
+     const main = document.createElement("main");
+     main.classList.add("main");
+ 
+-    main.innerHTML = template(this.props.section);
++    main.innerHTML = template();
+ 
+     if (this.props.section === "route1") {
+       // const module = new Module1(this.props);
+diff --git a/src/components/main/template.ts b/src/components/main/template.ts
+index c554874..03e41cb 100644
+--- a/src/components/main/template.ts
++++ b/src/components/main/template.ts
+@@ -1,4 +1,4 @@
+-function template(page: string | undefined) {
++function template() {
+   return `
+     <div class="container">
+       <div class="title_wrapper">
+diff --git a/webpack.config.js b/webpack.config.js
+index 8d2ce94..4725c35 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -4,7 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
+ const path = require("path");
+ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+ const EslingPlugin = require('eslint-webpack-plugin');
+-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
++const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+ 
+ module.exports = {
+   mode: "development",
