@@ -217,7 +217,7 @@ class RegisterForm extends Component {
           token: <string>data.token,
         });
         console.log(JSON.stringify(Model.getState()));
-        window.location.href = "http://localhost:3001/#/site";
+        window.location.href = "http://localhost:3000/#/site";
       }
     } else {
       this.registerMessage.elem.textContent = "Incorrect user data!";
